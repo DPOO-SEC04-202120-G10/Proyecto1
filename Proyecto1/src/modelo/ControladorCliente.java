@@ -9,7 +9,7 @@ public class ControladorCliente
 	private ArrayList<Cliente> clientes;
 public void registrarNuevoCliente (int cedula) 
 {
-	 
+	  
 	String edadd = input("Edad:");
 	int edad= Integer.parseInt(edadd);
 	String estadoCivil = input("Estado Civil");

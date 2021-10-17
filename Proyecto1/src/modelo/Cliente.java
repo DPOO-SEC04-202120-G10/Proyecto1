@@ -23,7 +23,7 @@ public Cliente(int cedula, int edad, String estadoCivil, String sexo,String situ
 	 
 public void anadirPuntos (int costo) 
 { 
-	int addpuntos=costo/1000;
+	int addpuntos=costo/1000; 
 	puntos=puntos+addpuntos;
 }
 public void anadirPedido (Pedido pedido) 
@@ -35,5 +35,9 @@ public void anadirPedido (Pedido pedido)
 public int getcedula()
 {
 	return cedula;
+}
+public int puntos()
+{
+	return puntos;
 }
 }

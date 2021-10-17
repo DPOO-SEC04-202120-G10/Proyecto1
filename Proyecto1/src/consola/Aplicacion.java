@@ -30,7 +30,7 @@ private static int idPedido;
 		
 		
 		boolean continuar = true;
-		while (continuar)
+		while (continuar) 
 		{
 			try
 			{
@@ -54,15 +54,15 @@ private static int idPedido;
 				{
 					System.out.println("Por favor seleccione una opción válida.");
 				}
-			}
-			catch (NumberFormatException e)
-			{
-				System.out.println("Debe seleccionar uno de los números de las opciones.");
-			}
-		}
+			
+			//catch (NumberFormatException e)
+		//	{
+			System.out.println("Debe seleccionar uno de los números de las opciones.");}
+		//	}
+			finally {{System.out.println("Hola.");}}
 	
 		
-	}
+	}}
 	
 	public static void mostrarMenu()
 	{
@@ -143,13 +143,13 @@ private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 	private static void ejecutarPedido(Cliente cliente, ControladorPedido elContP, ControladorInventario elContI,int idPedido)
 	{
 		Pedido pedido = elContP.nuevoPedido(idPedido); 
-		ejecutaranadirProd(pedido,elContP);
+		ejecutaranadirProd(pedido,elContP, cliente);
 		
 		cliente.anadirPedido(pedido);
 	}
 
 
-	private static void ejecutaranadirProd(Pedido pedido, ControladorPedido contp)
+	private static void ejecutaranadirProd(Pedido pedido, ControladorPedido contp, Cliente cliente)
 	{boolean mas= true;
 	while (mas==true)
 	{
@@ -158,12 +158,11 @@ private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 		{String idd = input("Escanee el producto o ingrese el id del producto:");
 		int id= Integer.parseInt(idd);
 		contp.anadirProducto(pedido, id);
-		
 	}
 	else
 	{
 		mas= false;
-		ejecutarCerrarPedido(idPedido, contp, pedido);
+		ejecutarCerrarPedido(idPedido, contp, pedido, cliente);
 		 
 		
 	}
@@ -171,10 +170,12 @@ private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 	}}
   
 	
-	private static  void ejecutarCerrarPedido(int idPedido, ControladorPedido contp,Pedido pedido)
+	private static  void ejecutarCerrarPedido(int idPedido, ControladorPedido contp,Pedido pedido, Cliente cliente)
 	{
 		idPedido=1+ idPedido;
 		contp.anadiraHistorial(pedido);
+		contp.generarFactura(pedido,cliente);
+		
 		
 		
 	}

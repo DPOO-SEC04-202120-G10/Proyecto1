@@ -1,23 +1,26 @@
 package modelo;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ControladorPedido {
 private ArrayList<Pedido> historialPedidos;
 
 public Pedido nuevoPedido (int idPedido)
-{
-	Pedido pedido= new Pedido(idPedido,01,0);
+{var fecha= LocalDate.now();
+	Pedido pedido= new Pedido(idPedido,fecha,0);
 	return pedido; 
 	}
-public String generarFactura(Pedido pedido)
+public String generarFactura(Pedido pedido, Cliente cliente)
 {
 	String textoFactura = "";
 	ArrayList<Producto> productos=pedido.getProductos();
 	for (int i = 0; i < productos.size(); i++){
 		Producto elItem = productos.get(i);
+		
 		var costo = precioProducto(elItem);
-		textoFactura = textoFactura + "%n" + elItem + ":     " + costo;
+		int puntosn= costo/1000;
+		int puntos= cliente.puntos();
+		textoFactura = textoFactura + "%n" + elItem + ":     " + costo + "\n Puntos nuevos :"+ puntosn + "\n Puntos Acumulados Totales"+ puntos;
 	}
 	
 	textoFactura = textoFactura + "%n" + "Precio Total:     " + pedido.getcosto();
@@ -27,6 +30,8 @@ public String generarFactura(Pedido pedido)
 public void anadirProducto (Pedido pedido,int id)
 {
 	Producto producto =ControladorInventario.consultarProducto(id);
+	int idp= producto.getidP();
+	ControladorInventario.actualizar(id, idp);
 	int costo= precioProducto(producto);
 	boolean disp=ControladorInventario.disponibilidadProducto(producto);
 	if (disp==true) 

@@ -15,10 +15,11 @@ public class Producto {
 	public int peso;
 	private Subcategoria subcategoria;
 	private LoteProducto lote;
-	private boolean disponible;
+	public boolean disponible;
+	public boolean vencido;
 	
 	public Producto(int id, String nombre, int temperaturaConservacion, Parte ubicacion, int precio, 
-			int precioUnidad, String unidad, boolean empacado, int peso, Subcategoria subcategoria, LoteProducto lote) {
+			int precioUnidad, String unidad, boolean empacado, int peso, Subcategoria subcategoria, LoteProducto lote, int idProducto) {
 		
 		this.id = id;
 		this.idProducto = idProducto;
@@ -33,6 +34,7 @@ public class Producto {
 		this.subcategoria = subcategoria;
 		this.lote = lote; 
 		this.disponible = true;
+		this.vencido= false;
 	}
 
 	
@@ -54,7 +56,11 @@ public int getpeso()
 }
 public int getid() {
 	// TODO Auto-generated method stub
-	return id;
+	return id;}
+
+	public int getidP() {
+		// TODO Auto-generated method stub
+		return idProducto;
 }
 public String getnombre() 
 {

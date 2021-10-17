@@ -86,11 +86,11 @@ public class ControladorInventario {
 		return disp;
 	}
 	
-	private void actualizar(int idProducto, int id, AdministradorProductos admin)
+	public void actualizar( int id,int idProducto)
 	{ 
-		int total= admin.disponiblesPorProducto.get(idProducto);
+		int total= AdministradorProductos.disponiblesPorProducto.get(idProducto);
 		int totales=total-1;
-		admin.disponiblesPorProducto.replace(idProducto, total, totales);
+		AdministradorProductos.disponiblesPorProducto.replace(idProducto, total, totales);
 		Producto prod= consultarProducto(id);
 		prod.cambiardisp();
 		
