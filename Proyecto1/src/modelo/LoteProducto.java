@@ -1,9 +1,11 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoteProducto {
-	private int id;
+	
+	public int id;
 	private String fechaVencimiento;
 	private int idProducto;
 	private int cantidadOriginal;
@@ -11,5 +13,24 @@ public class LoteProducto {
 	private int precioCompraProducto; 
 	private int precioVentaProducto;
 	private ArrayList<Producto> productos;
+	
+	
+	public LoteProducto(int id, String fechaVencimiento, int idProducto, int cantidadOriginal, int cantidadDisponibles,
+			int precioCompraProducto, int precioVentaProducto) {
+		
+		this.id = id;
+		this.fechaVencimiento = fechaVencimiento; 
+		this.idProducto = idProducto;
+		this.cantidadOriginal = cantidadOriginal;
+		this.cantidadDisponibles = cantidadDisponibles;
+		this.precioCompraProducto = precioCompraProducto;
+		this.precioVentaProducto = precioVentaProducto; 
+		this.productos = new ArrayList<Producto>();
+		
+	}
+	
+	public void agregarProducto(Producto producto) {
+		
+	}
 	
 }

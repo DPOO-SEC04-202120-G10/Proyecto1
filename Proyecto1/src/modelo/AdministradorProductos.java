@@ -1,10 +1,25 @@
 package modelo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class AdministradorProductos {
-	private ArrayList<Producto> productos;
-	private ArrayList<LoteProducto> lotes; 
+	public ArrayList<Producto> productos;
+	public ArrayList<LoteProducto> lotes; 
+	public HashMap<Integer,Integer> historico;
+	public HashMap<Integer,Integer> disponiblesPorProducto;
+	
+	public AdministradorProductos(){
+		this.lotes = new ArrayList<LoteProducto>();
+		this.productos = new ArrayList<Producto>();
+		this.historico = new HashMap<Integer, Integer>();
+		this.disponiblesPorProducto = new HashMap<Integer, Integer>();
+	}
+	
+	
 	
 
 }

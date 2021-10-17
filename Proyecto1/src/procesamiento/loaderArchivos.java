@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import modelo.LoteProducto;
+import modelo.Producto;
 
 public class loaderArchivos {
 
@@ -30,7 +31,7 @@ public class loaderArchivos {
 			// Separar los valores que estan en la linea por el caracter ';'
 			String[] partes = linea.split(";");
 			
-			ProductoMenu nuevoProducto = new ProductoMenu(partes[0], Integer.parseInt(partes[1]));   // Creacion de un objeto ProductoMenu con su nombre y precio base
+			LoteProducto Loteproducto = new LoteProducto(); // Creacion de un objeto ProductoMenu con su nombre y precio base
 			nuevoProducto.anadirCalorias(Integer.parseInt(partes[2]));
 			productosMenu.add( nuevoProducto );
 
