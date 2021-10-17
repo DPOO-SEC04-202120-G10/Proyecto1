@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Pedido {
 	public ArrayList<Producto> productos;
-	public int id;
+	public int idPedido;
 	public int fecha;
 	public int  costo; 
 	public Pedido(int id, int fecha, int costo ) 
 	{
-		this.id = id;
+		this.idPedido = idPedido;
 		this.fecha = fecha;
 		this.costo= costo;
 	}

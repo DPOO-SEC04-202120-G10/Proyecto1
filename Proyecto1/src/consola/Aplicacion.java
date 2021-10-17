@@ -1,12 +1,13 @@
 package consola;
 import java.util.ArrayList;
 
-import uniandes.dpoo.modelo.Combo;
-import uniandes.dpoo.modelo.Ingrediente;
-import uniandes.dpoo.modelo.Pedido;
-import uniandes.dpoo.modelo.ProductoAjustado;
-import uniandes.dpoo.modelo.ProductoMenu;
-import uniandes.dpoo.modelo.Restaurante;
+import modelo.Cliente;
+import modelo.ControladorCliente;
+import modelo.ControladorInventario;
+import modelo.ControladorPedido;
+import modelo.Pedido;
+import modelo.Cliente;
+
 import java.io.*;
 import java.io.BufferedReader;
 
@@ -17,25 +18,17 @@ private static int idPedido;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Inicio de ejecucion de la aplicacion");
-		Restaurante elRestaurante= new Restaurante();
-		ejecutarAplicacion(elRestaurante);
+		ControladorCliente  elContC = new ControladorCliente();
+		ControladorInventario elContI = new ControladorInventario ();
+		ejecutarAplicacion(elContC,elContI, idPedido);
 		
 	}
-	public static void ejecutarAplicacion(Restaurante elRestaurante)
+	public static void ejecutarAplicacion(ControladorCliente  elContC, ControladorInventario elContI, int idPedido)
 	{
 		System.out.println("Bienvenido al Supermercado\n");
+			
 		
-		try {
-				elRestaurante.cargarInformacionRestaurante("menu.txt", "ingredientes.txt" ,"combos.txt" );
-		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		idPedido= 0;
-
+		
 		boolean continuar = true;
 		while (continuar)
 		{
@@ -46,9 +39,11 @@ private static int idPedido;
 				int opcion_seleccionada= Integer.parseInt(opcion_seleccionadaa);
 	
 				if (opcion_seleccionada == 1)
-					ejecutarInv();
+				//ejecutarInv();
+					System.out.println("Hola");
+			
 				else if (opcion_seleccionada == 2)
-					ejecutarPOS();
+					ejecutarPOS(elContC, elContI, idPedido);
 
 				else if (opcion_seleccionada == 3)
 				{
@@ -65,8 +60,9 @@ private static int idPedido;
 				System.out.println("Debe seleccionar uno de los números de las opciones.");
 			}
 		}
+	
+		
 	}
-
 	
 	public static void mostrarMenu()
 	{
@@ -81,175 +77,108 @@ private static int idPedido;
 
 		}
 			
-		}
-	private static void ejecutarMostrarMenu2()
+		
+	private static void MostrarMenu2()
 	{
 		System.out.println("\nOpciones de la aplicacion\n");
 		System.out.println("1. Registrar Nuevo Cliente");
 		System.out.println("2. Ingresar Cliente");
-		System.out.println("3. Iniciar Pedido\n");
-		System.out.println("4. Salir de la aplicación\n");
+		System.out.println("3. Salir de la aplicación\n");
+		idPedido= 0;
 	}
-}
-private static void ejecutarPOS()
-	
-	private static void ejecutarMostrarCombo(Restaurante elRestaurante)
-	{
-		System.out.println("\n" + "Combo" + "\n");
-		int a= 0;
-		for (Combo i:elRestaurante.getCombo())
-		{
-			int b= a+1;
-		System.out.println(String.valueOf(b) + i);
-		a=a+1;
-		}
-}
-	private static void anadirElementos(ProductoMenu elProducto, Restaurante elRestaurante)
-	{
-	ProductoAjustado elProductoAjustado= new ProductoAjustado(elProducto);
-	String suma= input("Quiere añadir igredientes al producto?:"+ "\n 1. Si "
-			+ "\n 2. No");
-	if (suma=="1")
-	{
-		
-		ejecutarMostrarIngredientes(elRestaurante);
-		
-		String ajuste=input("Ingrese el numero del ingrediente que quiere añadir"); 
-		int a=1-Integer.valueOf(ajuste) ;
-		int b=0;
-		for (Ingrediente i:elRestaurante.getIngredientes())
+
+private static void ejecutarPOS(ControladorCliente  elContC, ControladorInventario contI, int idPedido) 
 {
-	
-	if (a==b)
-	{
-		elProductoAjustado.anadirIngrediente(i); 
-	}
-	b=b+1;
-}
+	ControladorPedido elContP = new ControladorPedido();
 		
-	}
-	String resta= input("Quiere eliminar igredientes al producto?:"+ "\n 1. Si "
-			+ "\n 2. No");
-	if (resta=="1")
+	boolean continuar = true;
+	while (continuar)
 	{
-		ejecutarMostrarIngredientes(elRestaurante);
-		
-		String ajuste=input("Ingrese el numero del ingrediente que quiere eliminar"); 
-		int a=1-Integer.valueOf(ajuste) ;
-		int b=0;
-		for (Ingrediente i:elRestaurante.getIngredientes())
+		try
 		{
-			if (a==b)
-			{
-				elProductoAjustado.eliminarIngrediente(i); 
-			}
-			b=b+1;
-			}
-	}
-	}
+			MostrarMenu2();
+			String opcion_seleccionadaa = input("Por favor seleccione una opcion");
+			int opcion_seleccionada= Integer.parseInt(opcion_seleccionadaa);
 
-
-	private static void ejecutarNuevoPedido(Restaurante elRestaurante, int idPedido)
-	{
-		
-		String cliente = input("Por favor ingrese su nombre");
-		String direccion= input("Por favor ingrese su nombre");
-		elRestaurante.iniciarPedido(cliente, direccion, idPedido);
-		Pedido elPedido= elRestaurante.getPedidoEnCurso();
-		ejecutarAgregarElemento(elPedido, elRestaurante);
-		
-	}
-
-	private static void ejecutarAgregarElemento(Pedido elPedido, Restaurante elRestaurante)
-	{
-		boolean mas= true;
-		while (mas==true)
-		{String tipo= input("Por favor ingrese tipo de pedido: \n 1. Menu \n 2. Combo ");
-				if (tipo=="1")
-				{
-					ejecutarMostrarMenu(elRestaurante);
-					String pedidot= input("Por favor ingrese el numero del Producto.");
-					int e=Integer.parseInt(pedidot);
-							int a=1-e;
-							int b=0;
-							for (ProductoMenu i:elRestaurante.getMenuBase())
-							{
-								
-								if (a==b)
-								{
-									anadirElementos(i, elRestaurante);
-;
-								Pedido.agregarProducto(i);
-								
-							}
-								else
-								{
-									b=b+1; 
-								}
-							}
-							
-				}
-				if (tipo=="2")
-				{
-					ejecutarMostrarCombo(elRestaurante);
-				String pedidot= input("Por favor ingrese el numero del Producto.");
-				int e=Integer.parseInt(pedidot);
-				int a=1-e;
-				int b=0;
-				for (ProductoMenu i:elRestaurante.getMenuBase())
-				{
-					
-					if (a==b)
-					{
-						anadirElementos(i, elRestaurante);
-
-						Pedido.agregarProducto(i);
-						}
-					
-					
-				
-					else
-					{
-						b=b+1; 
-					}
-				}					
-}
-
-				String otro= input("Quiere añadir otro producto?:"	+ "\n 1. Si "
-						+ "\n 2. No");
-				
-				if (otro=="2")
-				{
-					mas=false;
-				}
-					
-				
-				
-				
-	
-	}
-		}
-	private static  void ejecutarCerrarPedido(Restaurante elRestaurante)
-	{
-		elRestaurante.cerrarYGuardarPedido();
-		idPedido=1+ idPedido;
-	}
-	private static void ejecutarVerPedidoPasado(Restaurante elRestaurante)
-	{
-		String id =input ("Ingrese el id de su pedido");
-		int id1=Integer.parseInt(id);
-		
-		for (Pedido i:(elRestaurante.getPedidosCerrados()))
-		{
-		if (id1==(i.getIdPedido()))
-				{
-			System.out.println(i);
+			Cliente cliente = null;
+			if (opcion_seleccionada == 1)
+				 cliente= ejecutarRegistrar(elContC);
+				ejecutarPedido(cliente, elContP, contI, idPedido);
+			 if (opcion_seleccionada == 2)
+				cliente= ejecutarIngresar(elContC);
+				ejecutarPedido(cliente, elContP, contI, idPedido);
 			
-				}
-		};
+			 if (opcion_seleccionada == 3)
+			{
+				System.out.println("Saliendo de la aplicación ...");
+				continuar = false;
+			}
+			else
+			{
+				System.out.println("Por favor seleccione una opción válida.");
+			}
+		}
+		catch (NumberFormatException e)
+		{
+			System.out.println("Debe seleccionar uno de los números de las opciones.");
+		}
+	}
+}
+
+private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
+{	String cedulaa = input("Cedula");
+	int cedula= Integer.parseInt(cedulaa);
+	elContC.registrarNuevoCliente (cedula);
+	Cliente elCliente = elContC.buscarCliente(cedula);
+	return elCliente;
+}
+	
+	private static Cliente ejecutarIngresar(ControladorCliente  elContC)
+	{String cedulaa = input("Cedula");
+	int cedula= Integer.parseInt(cedulaa);
+	Cliente elCliente = elContC.buscarCliente(cedula);
+	return elCliente;
+		}
+
+	private static void ejecutarPedido(Cliente cliente, ControladorPedido elContP, ControladorInventario elContI,int idPedido)
+	{
+		Pedido pedido = elContP.nuevoPedido(idPedido); 
+		ejecutaranadirProd(pedido,elContP);
+		
+		cliente.anadirPedido(pedido);
+	}
+
+
+	private static void ejecutaranadirProd(Pedido pedido, ControladorPedido contp)
+	{boolean mas= true;
+	while (mas==true)
+	{
+		String si= input("1. Añadir un  producto \n 2. Finalizar");
+	if (si=="1")
+		{String idd = input("Escanee el producto o ingrese el id del producto:");
+		int id= Integer.parseInt(idd);
+		contp.anadirProducto(pedido, id);
+		
+	}
+	else
+	{
+		mas= false;
+		ejecutarCerrarPedido(idPedido, contp, pedido);
 		
 		
 	}
+		
+	}}
+
+	
+	private static  void ejecutarCerrarPedido(int idPedido, ControladorPedido contp,Pedido pedido)
+	{
+		idPedido=1+ idPedido;
+		contp.anadiraHistorial(pedido);
+		
+		
+	}
+
 	
 	private static String input(String string) {
 		// TODO Auto-generated method stub

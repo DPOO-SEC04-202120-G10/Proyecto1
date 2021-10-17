@@ -7,10 +7,9 @@ public class ControladorCliente
 {
 	private static Cliente elCliente = null;
 	private ArrayList<Cliente> clientes;
-private void registrarNuevoCliente () 
+public void registrarNuevoCliente (int cedula) 
 {
-	String cedulaa = input("Cedula");
-	int cedula= Integer.parseInt(cedulaa);
+	
 	String edadd = input("Edad:");
 	int edad= Integer.parseInt(edadd);
 	String estadoCivil = input("Estado Civil");
@@ -21,7 +20,7 @@ private void registrarNuevoCliente ()
 	Cliente elcliente= new Cliente(cedula,edad,estadoCivil,sexo,situacionLaboral, puntos );
 	clientes.add(elcliente);
 }
-private Cliente buscarCliente(int id)
+public Cliente buscarCliente(int id)
 {
 	for (Cliente i:getCLientes())
 	{

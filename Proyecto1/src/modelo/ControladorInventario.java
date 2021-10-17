@@ -36,7 +36,7 @@ public class ControladorInventario {
 		}
 	}
 	
-	public Producto consultarProducto(int id) {
+	public static Producto consultarProducto(int id) {
 		var producto = buscarEnListaProducto(id,adminProductos.productos);
 		return producto;
 	}
@@ -80,9 +80,10 @@ public class ControladorInventario {
 
 	
 
-	public boolean disponibilidadProducto(Producto producto)
+	public static boolean disponibilidadProducto(Producto producto)
 	{
-		return true;
+		boolean disp=producto.getdisponibilidad();
+		return disp;
 	}
 	
 	private void actualizar(int idProducto, int id, AdministradorProductos admin)

@@ -29,6 +29,8 @@ public void anadirPuntos (int costo)
 public void anadirPedido (Pedido pedido) 
 {
 	historialPedidos.add(pedido);
+	int costo= pedido.getcosto();
+	anadirPuntos(costo);
 }
 public int getcedula()
 {

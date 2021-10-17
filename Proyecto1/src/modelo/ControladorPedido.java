@@ -3,10 +3,13 @@ package modelo;
 import java.util.ArrayList;
 
 public class ControladorPedido {
-public int id;
 private ArrayList<Pedido> historialPedidos;
 
-
+public Pedido nuevoPedido (int idPedido)
+{
+	Pedido pedido= new Pedido(idPedido,01,0);
+	return pedido; 
+	}
 public String generarFactura(Pedido pedido)
 {
 	String textoFactura = "";
@@ -20,9 +23,18 @@ public String generarFactura(Pedido pedido)
 	textoFactura = textoFactura + "%n" + "Precio Total:     " + pedido.getcosto();
 	return textoFactura;
 }
-public void anadirProducto (Pedido pedido,Producto producto, int costo)
+
+public void anadirProducto (Pedido pedido,int id)
 {
+	Producto producto =ControladorInventario.consultarProducto(id);
+	int costo= precioProducto(producto);
+	boolean disp=ControladorInventario.disponibilidadProducto(producto);
+	if (disp==true) 
+	{
 	pedido.anadirProducto(producto, costo);
+}
+	else
+	{System.out.println("Este producto no se encuentra disponible."); }
 }
 
 public int precioProducto(Producto producto)
