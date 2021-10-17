@@ -169,7 +169,7 @@ private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 	}
 		
 	}}
-
+  
 	
 	private static  void ejecutarCerrarPedido(int idPedido, ControladorPedido contp,Pedido pedido)
 	{
