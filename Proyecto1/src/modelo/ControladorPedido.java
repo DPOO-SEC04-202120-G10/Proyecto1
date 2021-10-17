@@ -3,24 +3,10 @@ package modelo;
 import java.util.ArrayList;
 
 public class ControladorPedido {
-private static final Producto productoo = null;
 public int id;
 private ArrayList<Pedido> historialPedidos;
 
-public Producto identificarProducto(int id, ControladorInventario controlinv,Producto productoo)
-{
 
-	for (Producto i:controlinv.getProductos())
-{int b=i.getid();
-
-if (id==b)
-{
-	productoo= i;
-	
-}
-}
-	return productoo;
-}
 public String generarFactura(Pedido pedido)
 {
 	String textoFactura = "";

@@ -23,7 +23,7 @@ private static int idPedido;
 	}
 	public static void ejecutarAplicacion(Restaurante elRestaurante)
 	{
-		System.out.println("Bienvenido al Restaurante\n");
+		System.out.println("Bienvenido al Supermercado\n");
 		
 		try {
 				elRestaurante.cargarInformacionRestaurante("menu.txt", "ingredientes.txt" ,"combos.txt" );
@@ -46,18 +46,11 @@ private static int idPedido;
 				int opcion_seleccionada= Integer.parseInt(opcion_seleccionadaa);
 	
 				if (opcion_seleccionada == 1)
-					ejecutarMostrarMenu(elRestaurante);
+					ejecutarInv();
 				else if (opcion_seleccionada == 2)
-					ejecutarMostrarCombo(elRestaurante);
-				//else if (opcion_seleccionada == 3)
-					//ejecutarMostrarIngredientes();
+					ejecutarPOS();
+
 				else if (opcion_seleccionada == 3)
-					ejecutarNuevoPedido(elRestaurante, idPedido);
-				else if (opcion_seleccionada == 4)
-					ejecutarCerrarPedido(elRestaurante);
-				else if (opcion_seleccionada == 5)
-					ejecutarVerPedidoPasado(elRestaurante);
-				else if (opcion_seleccionada == 6)
 				{
 					System.out.println("Saliendo de la aplicación ...");
 					continuar = false;
@@ -78,36 +71,27 @@ private static int idPedido;
 	public static void mostrarMenu()
 	{
 		System.out.println("\nOpciones de la aplicacion\n");
-		System.out.println("1. Ver el Menu");
-		System.out.println("2. Ver el Combo");
-		System.out.println("3. Iniciar Un nuevo Pedido");
-		System.out.println("4. Cerrar un pedido y guardar la factura");
-		System.out.println("5.Consultar pedido pasado\n");
-		System.out.println("6. Salir de la aplicación\n");
+		System.out.println("1. Sistema Inventario");
+		System.out.println("2. Sistema POS");
+		System.out.println("3. Salir de la aplicación\n");
 	}
 
-	private static void ejecutarMostrarMenu(Restaurante elRestaurante)
+	private static void ejecutarMostrarMenu1 ()
 	{
-		System.out.println("\n" + "Menu" + "\n");
-		int a=0;
-		for (ProductoMenu i:elRestaurante.getMenuBase()) {
-			int b= a+1;
-			System.out.println(String.valueOf(b) + i);
-			a=a+1;
+
 		}
 			
 		}
-	private static void ejecutarMostrarIngredientes(Restaurante elRestaurante)
+	private static void ejecutarMostrarMenu2()
 	{
-	System.out.println("\n" + "Ingredientes Adicionales" + "\n");
-	int a= 0;
-	for (Ingrediente i:elRestaurante.getIngredientes()) {
-		int b= a+1;
-		System.out.println(String.valueOf(b) + i);
-		a=a+1;
+		System.out.println("\nOpciones de la aplicacion\n");
+		System.out.println("1. Registrar Nuevo Cliente");
+		System.out.println("2. Ingresar Cliente");
+		System.out.println("3. Iniciar Pedido\n");
+		System.out.println("4. Salir de la aplicación\n");
 	}
 }
-
+private static void ejecutarPOS()
 	
 	private static void ejecutarMostrarCombo(Restaurante elRestaurante)
 	{

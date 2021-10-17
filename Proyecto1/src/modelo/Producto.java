@@ -56,9 +56,17 @@ public int getid() {
 	// TODO Auto-generated method stub
 	return id;
 }
-public String getnombre() {
+public String getnombre() 
+{
 	// TODO Auto-generated method stub
 	return nombre;
 }
-
+public boolean getdisponibilidad() 
+{
+	// TODO Auto-generated method stub
+	return disponible;
+			}
+public void cambiardisp() 
+{ disponible= false;
+}
 }

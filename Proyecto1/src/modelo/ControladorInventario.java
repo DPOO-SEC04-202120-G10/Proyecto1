@@ -36,7 +36,7 @@ public class ControladorInventario {
 		}
 	}
 	
-	private Producto consultarProducto(int id) {
+	public Producto consultarProducto(int id) {
 		var producto = buscarEnListaProducto(id,adminProductos.productos);
 		return producto;
 	}
@@ -85,24 +85,18 @@ public class ControladorInventario {
 		return true;
 	}
 	
-	private void actualizar(Producto producto)
-	{
-	{
-	}
-		for (Producto i:getProductos())
-	{
-
-	if (i==producto)
-	{
-		productos.remove(i);
+	private void actualizar(int idProducto, int id, AdministradorProductos admin)
+	{ 
+		int total= admin.disponiblesPorProducto.get(idProducto);
+		int totales=total-1;
+		admin.disponiblesPorProducto.replace(idProducto, total, totales);
+		Producto prod= consultarProducto(id);
+		prod.cambiardisp();
 		
 	}
-	}
-}
-public  ArrayList<Producto> getProductos()
-{
-	return productos;
-}
+	
+
+
 
 }
 
