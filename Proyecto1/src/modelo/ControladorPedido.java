@@ -1,44 +1,47 @@
 package modelo;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ControladorPedido {
-private static final Producto productoo = null;
-public int id;
 private ArrayList<Pedido> historialPedidos;
 
-public Producto identificarProducto(int id, ControladorInventario controlinv,Producto productoo)
-{
-
-	for (Producto i:controlinv.getProductos())
-{int b=i.getid();
-
-if (id==b)
-{
-	productoo= i;
-	
-}
-}
-	return productoo;
-}
-public String generarFactura(Pedido pedido)
+public Pedido nuevoPedido (int idPedido)
+{var fecha= LocalDate.now();
+	Pedido pedido= new Pedido(idPedido,fecha,0);
+	return pedido; 
+	}
+public String generarFactura(Pedido pedido, Cliente cliente)
 {
 	String textoFactura = "";
 	ArrayList<Producto> productos=pedido.getProductos();
 	for (int i = 0; i < productos.size(); i++){
 		Producto elItem = productos.get(i);
+		
 		var costo = precioProducto(elItem);
-		textoFactura = textoFactura + "%n" + elItem + ":     " + costo;
+		int puntosn= costo/1000;
+		int puntos= cliente.puntos();
+		textoFactura = textoFactura + "%n" + elItem + ":     " + costo + "\n Puntos nuevos :"+ puntosn + "\n Puntos Acumulados Totales"+ puntos;
 	}
 	
 	textoFactura = textoFactura + "%n" + "Precio Total:     " + pedido.getcosto();
 	return textoFactura;
 }
-public void anadirProducto (Pedido pedido,Producto producto, int costo)
+
+public void anadirProducto (Pedido pedido,int id, ControladorInventario controladorInventario)
 {
+	Producto producto = controladorInventario.consultarProducto(id);
+	int idp= producto.getidP();
+	controladorInventario.actualizar(id, idp);
+	int costo= precioProducto(producto);
+	boolean disp=ControladorInventario.disponibilidadProducto(producto);
+	if (disp==true) 
+	{
 	pedido.anadirProducto(producto, costo);
 }
-
+	else
+	{System.out.println("Este producto no se encuentra disponible."); }
+}
+ 
 public int precioProducto(Producto producto)
 {
 	boolean como = producto.getempacado();

@@ -20,19 +20,11 @@ public class ControladorInventario {
 		
 	}
 	
-	private void cargarNuevoLote(String archivoLote) throws FileNotFoundException, IOException
+	private void cargarNuevoLote(String archivoLote, ControladorInventario controladorInventario) throws FileNotFoundException, IOException
 	{
 		
 		try {
-			ArrayList<LoteProducto> lotes = LoaderArchivos.leerArchivoLote(archivoLote,numeroProductos());
-			int i = 0;
-			while (i < lotes.size()) {
-				var lote = lotes.get(i);
-				adminProductos.lotes.add(lote);
-				i+=1;
-			}
-			
-			
+			LoaderArchivos.leerArchivoLote(archivoLote, controladorInventario);
 			
 		}
 		catch (FileNotFoundException e) {
@@ -43,9 +35,8 @@ public class ControladorInventario {
 		}
 	}
 	
-	
-	
-	private Producto consultarProducto(int id) {
+
+	public Producto consultarProducto(int id) {
 		var producto = buscarEnListaProducto(id,adminProductos.productos);
 		return producto;
 	}
@@ -63,7 +54,7 @@ public class ControladorInventario {
 			if (productoLista.id == x) {
 				return productoLista;
 			}
-			i+=1;
+			i+=1; 
 		}
 		
 	
@@ -111,29 +102,24 @@ public class ControladorInventario {
 		
 	}
 
-	public boolean disponibilidadProducto(Producto producto)
+	public static boolean disponibilidadProducto(Producto producto)
 	{
-		return true;
+		boolean disp=producto.getdisponibilidad();
+		return disp;
 	}
 	
-	private void actualizar(Producto producto)
-	{
-	{
-	}
-		for (Producto i:getProductos())
-	{
-
-	if (i==producto)
-	{
-		productos.remove(i);
+	public void actualizar( int id,int idProducto)
+	{ 
+		int total= adminProductos.disponiblesPorProducto.get(idProducto);
+		int totales=total-1;
+		adminProductos.disponiblesPorProducto.replace(idProducto, total, totales);
+		Producto prod= consultarProducto(id);
+		prod.cambiardisp();
 		
 	}
-	}
-}
-public  ArrayList<Producto> getProductos()
-{
-	return productos;
-}
+	
+
+
 
 }
 

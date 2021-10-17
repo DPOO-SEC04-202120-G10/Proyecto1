@@ -1,15 +1,15 @@
 package modelo;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Pedido {
 	public ArrayList<Producto> productos;
-	public int id;
-	public int fecha;
+	public int idPedido;
+	public LocalDate fecha;
 	public int  costo; 
-	public Pedido(int id, int fecha, int costo ) 
+	public Pedido(int id, LocalDate fecha, int costo ) 
 	{
-		this.id = id;
+		this.idPedido = id;
 		this.fecha = fecha;
 		this.costo= costo;
 	}
