@@ -164,7 +164,7 @@ private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 	{
 		mas= false;
 		ejecutarCerrarPedido(idPedido, contp, pedido);
-		
+		 
 		
 	}
 		

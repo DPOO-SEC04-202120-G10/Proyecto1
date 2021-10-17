@@ -54,7 +54,7 @@ public class ControladorInventario {
 			if (productoLista.id == x) {
 				return productoLista;
 			}
-			i+=1;
+			i+=1; 
 		}
 		
 		productoNulo = new Producto();

@@ -36,7 +36,7 @@ public void anadirProducto (Pedido pedido,int id)
 	else
 	{System.out.println("Este producto no se encuentra disponible."); }
 }
-
+ 
 public int precioProducto(Producto producto)
 {
 	boolean como = producto.getempacado();
