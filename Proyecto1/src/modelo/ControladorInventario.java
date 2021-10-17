@@ -1,10 +1,14 @@
 package modelo;
 
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+
 public class ControladorInventario {
+
 	private AdministradorOrganizador adminOrganizador;
 	private AdministradorProductos adminProductos;
 	
@@ -73,5 +77,32 @@ public class ControladorInventario {
 		return loteNulo;
 			
 	}
+
+	
+
+	public boolean disponibilidadProducto(Producto producto)
+	{
+		return true;
+	}
+	
+	private void actualizar(Producto producto)
+	{
+	{
+	}
+		for (Producto i:getProductos())
+	{
+
+	if (i==producto)
+	{
+		productos.remove(i);
+		
+	}
+	}
+}
+public  ArrayList<Producto> getProductos()
+{
+	return productos;
+}
+
 }
 

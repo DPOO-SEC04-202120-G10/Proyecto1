@@ -1,16 +1,18 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Producto {
 	public int id;
 	private int idProducto;
 	private String nombre;
 	private int temperaturaConservacion;
 	private Parte ubicacion;
-	private int precio;
-	private int precioUnidad;
+	public int precio;
+	public int precioUnidad;
 	private String unidad;
 	private boolean empacado;
-	private int peso;
+	public int peso;
 	private Subcategoria subcategoria;
 	private LoteProducto lote;
 	private boolean disponible;
@@ -32,8 +34,31 @@ public class Producto {
 		this.lote = lote; 
 		this.disponible = true;
 	}
-	
-	
 
+	
+public boolean getempacado()
+{
+	return empacado;
+}
+public int getprecio()
+{
+	return precio;
+}
+public int getprecioUnidad()
+{
+	return precioUnidad;
+}
+public int getpeso()
+{
+	return peso;
+}
+public int getid() {
+	// TODO Auto-generated method stub
+	return id;
+}
+public String getnombre() {
+	// TODO Auto-generated method stub
+	return nombre;
+}
 
 }
