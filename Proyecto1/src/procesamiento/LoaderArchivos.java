@@ -55,6 +55,14 @@ public class LoaderArchivos {
 			int idCategoria = Integer.parseInt(partes[13]);
 			int idSubcategoria = Integer.parseInt(partes[14]);
 			
+			var mapa = controladorInventario.adminProductos.disponiblesPorProducto;
+			
+			if (mapa.get(idProducto)!= null) {
+				mapa.put(idProducto, mapa.get(idProducto) + cantidadOriginal);
+			}
+			else {
+				mapa.put(idProducto, cantidadOriginal);
+			}
 			
 			LoteProducto loteProducto = new LoteProducto(id, fechaVencimiento, idProducto, cantidadOriginal, cantidadDisponibles,
 					precioCompraProducto, precioVentaProducto); 
@@ -129,8 +137,9 @@ public class LoaderArchivos {
 				}
 			}
 			
-			
+			controladorInventario.actualizarPrecios(loteProducto);
 			controladorInventario.adminProductos.agregarLote(loteProducto);
+			
 			
 			linea = br.readLine(); 
 		}

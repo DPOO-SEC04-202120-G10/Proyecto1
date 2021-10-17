@@ -98,8 +98,23 @@ public class ControladorInventario {
 	}
 	
 	public void actualizarPrecios(LoteProducto lote) {
-		
-		
+		var precioVentaNuevo = lote.precioVentaProducto;
+		var idProducto = lote.idProducto;
+		var lotes = adminProductos.lotes;
+		int i = 0;
+		while (i<lotes.size()) {
+			var lote1 = lotes.get(i);
+			if (lote1.idProducto==idProducto) {
+				int e = 0;
+				var listaPs = lote.productos;
+				while (e<listaPs.size()) {
+					Producto producto = listaPs.get(e);
+					if (producto.disponible) {
+						producto.actualizarPrecio(precioVentaNuevo);
+					}
+				}
+			}
+		}
 	}
 
 	public static boolean disponibilidadProducto(Producto producto)

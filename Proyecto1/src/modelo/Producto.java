@@ -41,6 +41,11 @@ public class Producto {
 		this.ubicacion = parte;
 		
 	}
+	
+	public void actualizarPrecio(int precio) {
+		this.precio = precio;
+	}
+	
 		
 	public boolean getempacado()
 	{
