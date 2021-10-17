@@ -15,7 +15,7 @@ import java.io.BufferedReader;
 
 public class Aplicacion {
 private static int idPedido;
-	public static void main(String[] args) {
+	public static void main(String[] args)   {
 		// TODO Auto-generated method stub
 		System.out.println("Inicio de ejecucion de la aplicacion");
 		ControladorCliente  elContC = new ControladorCliente();
