@@ -17,48 +17,51 @@ public class Producto {
 	private LoteProducto lote;
 	private boolean disponible;
 	
-	public Producto(int id, String nombre, int temperaturaConservacion, Parte ubicacion, int precio, 
-			int precioUnidad, String unidad, boolean empacado, int peso, Subcategoria subcategoria, LoteProducto lote) {
+	public Producto(int id, int idProducto, String nombre, int temperaturaConservacion, int precio, 
+			int precioUnidad, String unidad, boolean empacado, int peso, LoteProducto lote) {
 		
 		this.id = id;
 		this.idProducto = idProducto;
 		this.nombre = nombre;
 		this.temperaturaConservacion = temperaturaConservacion;
-		this.ubicacion = ubicacion;
 		this.precio = precio;
 		this.precioUnidad = precioUnidad;
 		this.unidad = unidad;
 		this.empacado = empacado;
 		this.peso = peso;
-		this.subcategoria = subcategoria;
 		this.lote = lote; 
 		this.disponible = true;
+
 	}
 
+	public void agregarUbicacion(Parte parte) {
+		this.ubicacion = parte;
+		
+	}
 	
-public boolean getempacado()
-{
-	return empacado;
-}
-public int getprecio()
-{
-	return precio;
-}
-public int getprecioUnidad()
-{
-	return precioUnidad;
-}
-public int getpeso()
-{
-	return peso;
-}
-public int getid() {
-	// TODO Auto-generated method stub
-	return id;
-}
-public String getnombre() {
-	// TODO Auto-generated method stub
-	return nombre;
-}
+	public boolean getempacado()
+	{
+		return empacado;
+	}
+	public int getprecio()
+	{
+		return precio;
+	}
+	public int getprecioUnidad()
+	{
+		return precioUnidad;
+	}
+	public int getpeso()
+	{
+		return peso;
+	}
+	public int getid() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+	public String getnombre() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
 
 }

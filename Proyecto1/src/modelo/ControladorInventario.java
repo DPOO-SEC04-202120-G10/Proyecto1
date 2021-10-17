@@ -5,12 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import procesamiento.LoaderArchivos;
 
 
 public class ControladorInventario {
 
-	private AdministradorOrganizador adminOrganizador;
-	private AdministradorProductos adminProductos;
+	public AdministradorOrganizador adminOrganizador;
+	public AdministradorProductos adminProductos;
 	
 	
 	public ControladorInventario(){
@@ -23,8 +24,14 @@ public class ControladorInventario {
 	{
 		
 		try {
-			LoteProducto lote = LoaderArchivos.leerInfoArchivoLote(archivoLote);
-			adminProductos.lotes.add(lote);
+			ArrayList<LoteProducto> lotes = LoaderArchivos.leerArchivoLote(archivoLote,numeroProductos());
+			int i = 0;
+			while (i < lotes.size()) {
+				var lote = lotes.get(i);
+				adminProductos.lotes.add(lote);
+				i+=1;
+			}
+			
 			
 			
 		}
@@ -35,6 +42,8 @@ public class ControladorInventario {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 	private Producto consultarProducto(int id) {
 		var producto = buscarEnListaProducto(id,adminProductos.productos);
@@ -57,8 +66,8 @@ public class ControladorInventario {
 			i+=1;
 		}
 		
-		productoNulo = new Producto();
-		return productoNulo;
+	
+		return null;
 			
 	}
 	
@@ -73,12 +82,34 @@ public class ControladorInventario {
 			i+=1;
 		}
 		
-		loteNulo = new LoteProducto();
-		return loteNulo;
+		return null;
 			
 	}
 
+	public int numeroProductos() {
+		int tamano = adminProductos.productos.size();
+		return tamano;
+	}
 	
+	public int numeroLotes() {
+		int tamano = adminProductos.lotes.size();
+		return tamano;
+	}
+	
+	public int numeroGondolas() {
+		int tamano = adminOrganizador.gondolas.size();
+		return tamano;
+	}
+	
+	public int numeroCategorias() {
+		int tamano = adminOrganizador.categorias.size();
+		return tamano;
+	}
+	
+	public void actualizarPrecios(LoteProducto lote) {
+		
+		
+	}
 
 	public boolean disponibilidadProducto(Producto producto)
 	{

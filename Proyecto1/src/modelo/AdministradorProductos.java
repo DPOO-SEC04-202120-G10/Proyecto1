@@ -19,7 +19,12 @@ public class AdministradorProductos {
 		this.disponiblesPorProducto = new HashMap<Integer, Integer>();
 	}
 	
+	public void agregarProducto(Producto producto) {
+		productos.add(producto);
+	}
 	
-	
+	public void agregarLote(LoteProducto lote) {
+		lotes.add(lote);
+	}
 
 }
