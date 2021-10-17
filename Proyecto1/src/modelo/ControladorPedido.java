@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 public class ControladorPedido {
 private ArrayList<Pedido> historialPedidos;
-
+public ControladorPedido ()
+{
+		this.historialPedidos= new ArrayList<Pedido>();
+	}
 public Pedido nuevoPedido (int idPedido)
 {var fecha= LocalDate.now();
 	Pedido pedido= new Pedido(idPedido,fecha,0);
