@@ -42,7 +42,6 @@ public class Aplicacion {
 			        System.out.println("Por favor seleccione una opcion");
 			        int opcion_seleccionada = inputScanner.nextInt();
 			        
-		
 					if (opcion_seleccionada == 1)
 					//ejecutarInv();
 						System.out.println("Hola");
@@ -103,11 +102,13 @@ public class Aplicacion {
 			try
 			{
 				MostrarMenu2();
-				String opcion_seleccionadaa = input("Por favor seleccione una opcion");
-				int opcion_seleccionada= Integer.parseInt(opcion_seleccionadaa);
+				inputScanner.useDelimiter(System.lineSeparator());
+		        System.out.println("Por favor seleccione una opcion");
+		        int opcion_seleccionada = inputScanner.nextInt();
 	
 				Cliente cliente = null;
 				if (opcion_seleccionada == 1)
+					 System.out.println("holan");
 					 cliente= ejecutarRegistrar(elContC);
 					ejecutarPedido(cliente, elContP, contI, idPedido);
 				 if (opcion_seleccionada == 2)
@@ -132,8 +133,10 @@ public class Aplicacion {
 	}
 	
 	private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
-	{	String cedulaa = input("Cedula");
-		int cedula= Integer.parseInt(cedulaa);
+	
+	{	inputScanner.useDelimiter(System.lineSeparator());
+    	System.out.println("Cedula:");
+    	int cedula = inputScanner.nextInt();
 		elContC.registrarNuevoCliente (cedula);
 		Cliente elCliente = elContC.buscarCliente(cedula);
 		return elCliente;
