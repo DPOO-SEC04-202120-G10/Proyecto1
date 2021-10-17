@@ -143,13 +143,13 @@ private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 	private static void ejecutarPedido(Cliente cliente, ControladorPedido elContP, ControladorInventario elContI,int idPedido)
 	{
 		Pedido pedido = elContP.nuevoPedido(idPedido); 
-		ejecutaranadirProd(pedido,elContP, cliente);
+		ejecutaranadirProd(pedido,elContP, cliente, elContI);
 		
 		cliente.anadirPedido(pedido);
 	}
 
 
-	private static void ejecutaranadirProd(Pedido pedido, ControladorPedido contp, Cliente cliente)
+	private static void ejecutaranadirProd(Pedido pedido, ControladorPedido contp, Cliente cliente, ControladorInventario elContI)
 	{boolean mas= true;
 	while (mas==true)
 	{
@@ -157,7 +157,7 @@ private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 	if (si=="1")
 		{String idd = input("Escanee el producto o ingrese el id del producto:");
 		int id= Integer.parseInt(idd);
-		contp.anadirProducto(pedido, id);
+		contp.anadirProducto(pedido, id, elContI);
 	}
 	else
 	{
