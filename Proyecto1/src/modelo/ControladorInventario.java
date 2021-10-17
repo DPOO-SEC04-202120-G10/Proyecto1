@@ -20,9 +20,7 @@ public class ControladorInventario {
 		
 		try {
 			LoteProducto lote = LoaderArchivos.leerInfoArchivoLote(archivoLote);
-			
 			adminProductos.lotes.add(lote);
-			
 			
 			
 		}
