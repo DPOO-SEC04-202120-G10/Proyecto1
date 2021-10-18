@@ -5,14 +5,17 @@ import java.util.ArrayList;
 public class ControladorPedido {
 private ArrayList<Pedido> historialPedidos;
 public ControladorPedido ()
-
 {
 		this.historialPedidos= new ArrayList<Pedido>();
 	}
+
 public Pedido nuevoPedido (int idPedido,String fecha) {
+	
 	Pedido pedido= new Pedido(idPedido,fecha,0);
 	return pedido; 
+	
 	}
+
 public String generarFactura(Pedido pedido, Cliente cliente)
 {
 	String textoFactura = "";

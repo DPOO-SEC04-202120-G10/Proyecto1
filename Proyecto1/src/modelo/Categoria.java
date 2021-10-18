@@ -11,6 +11,7 @@ public class Categoria {
 	public Categoria(int id, String nombre) {
 		this.id = id;
 		this.nombre = nombre; 
+		this.subcategorias = new ArrayList<Subcategoria>();
 	}
 	
 	public void agregarSubcategoria(Subcategoria subcategoria) {

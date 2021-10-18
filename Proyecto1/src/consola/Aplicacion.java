@@ -167,12 +167,22 @@ public class Aplicacion {
 	
 	
 		private static void ejecutaranadirProd(Pedido pedido, ControladorPedido contp, Cliente cliente, ControladorInventario elContI)
-		{boolean mas= true;
-		while (mas==true)
 		{
-			String si= input("1. Añadir un  producto \n 2. Finalizar");
-		if (si=="1")
-			{String idd = input("Escanee el producto o ingrese el id del producto:");
+		boolean mas= true;
+		while (mas==true)
+		
+		{
+			inputScanner.useDelimiter(System.lineSeparator());
+			System.out.println("1. Anadir un  producto \\n 2. Finalizar:");
+			int si = inputScanner.nextInt();
+			
+		if (si==1)
+			{
+			inputScanner.useDelimiter(System.lineSeparator());
+			System.out.println("Escanee el producto o ingrese el id del producto:");
+			String idd = inputScanner.next();
+			
+			
 			int id= Integer.parseInt(idd);
 			contp.anadirProducto(pedido, id, elContI);
 		}
@@ -253,7 +263,7 @@ public class Aplicacion {
 			System.out.println("\nOpciones\n");
 			System.out.println("1. Cargar nuevo cargamento");
 			System.out.println("2. Consultar informacion producto");
-			System.out.println("3. Consulat informacion lote \n");
+			System.out.println("3. Consultar informacion lote");
 			System.out.println("4. Salir \n");
 		
 		}
@@ -263,7 +273,9 @@ public class Aplicacion {
 			System.out.println("Ingrese direccion archivo: ");
 			String archivo = inputScanner.next();
 			try {
-				elContI.cargarNuevoLote(archivo, elContI);
+				
+				elContI.cargarNuevoLote(archivo);
+			
 			}
 		
 			catch (FileNotFoundException e) {

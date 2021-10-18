@@ -10,6 +10,7 @@ public class Gondola {
 	public Gondola(int id,Categoria categoria) {
 		this.id = id;
 		this.categoria = categoria;
+		this.partes = new ArrayList<Parte>();
 	}
 	
 	public void agregarParte(Parte parte){

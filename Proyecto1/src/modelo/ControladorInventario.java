@@ -7,6 +7,12 @@ import java.util.ArrayList;
 
 import procesamiento.LoaderArchivos;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class ControladorInventario {
 
@@ -20,20 +26,202 @@ public class ControladorInventario {
 		
 	}
 	
-	public void cargarNuevoLote(String archivoLote, ControladorInventario controladorInventario) throws FileNotFoundException, IOException
+	public void cargarNuevoLote(String rutaArchivo) throws FileNotFoundException, IOException
 	{
 		
-		try {
-			LoaderArchivos.leerArchivoLote(archivoLote, controladorInventario);
+		BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
+		String linea = br.readLine();    
+		System.out.println("1");
+		
+		while (linea != null) 
+		{
+			System.out.println("2");
 			
+			String[] partes = linea.split(";");
+			
+			System.out.println("3");
+			int id = Integer.parseInt(partes[0]);
+			System.out.println("4");
+			String fechaVencimiento = partes[1];
+			System.out.println("4");
+			int idProducto = Integer.parseInt(partes[2]);
+			int cantidadOriginal = Integer.parseInt(partes[3]);
+			int cantidadDisponibles = cantidadOriginal;
+			int precioCompraProducto = Integer.parseInt(partes[4]);
+			int precioVentaProducto = Integer.parseInt(partes[5]);
+			String nombre = partes[6];
+			int temperaturaConservacion = Integer.parseInt(partes[7]);
+			String unidad = partes[8];
+			System.out.println("6");
+			int peso = Integer.parseInt(partes[9]);
+			System.out.println("a");
+			int precioUnidad = peso/precioVentaProducto;
+			System.out.println("c");
+			boolean empacado = Boolean.parseBoolean(partes[10]);
+			System.out.println("d");
+			String categoriaStr = partes[11];
+			String subcategoriaStr = partes[12];
+			System.out.println("b");
+			int idCategoria = Integer.parseInt(partes[13]);
+			int idSubcategoria = Integer.parseInt(partes[14]);
+			
+			
+			
+			var mapa = adminProductos.disponiblesPorProducto;
+			System.out.println("7");
+			if (mapa.get(idProducto)!= null) {
+				mapa.put(idProducto, mapa.get(idProducto) + cantidadOriginal);
+			}
+			else {
+				mapa.put(idProducto, cantidadOriginal);
+			}
+			
+			LoteProducto loteProducto = new LoteProducto(id, fechaVencimiento, idProducto, cantidadOriginal, cantidadDisponibles,
+					precioCompraProducto, precioVentaProducto); 
+			
+			
+			System.out.println("8");
+			if (adminOrganizador.existeCategoria(idCategoria, adminOrganizador.categorias)) {
+				var categoria = adminOrganizador.retornarCategoria(idCategoria,adminOrganizador.categorias);
+				var gondola = categoria.retornarGondola();
+				
+				if (categoria.existeSubcategoria(idSubcategoria, categoria.subcategorias)) {
+					var subcategoria = categoria.retornarSubcategoria(idSubcategoria, categoria.subcategorias); 
+					var parte = gondola.retornarParte(idSubcategoria);
+					
+					int i = 0;
+					while (i < cantidadOriginal) {
+						int id1 = numeroProductos()+1;
+						var producto = new Producto(id1, idProducto, nombre, temperaturaConservacion, precioVentaProducto, 
+								precioUnidad, unidad, empacado, peso, loteProducto);
+						producto.agregarUbicacion(parte);
+						loteProducto.agregarProducto(producto);
+						adminProductos.agregarProducto(producto);
+						
+						i+=1;
+					}
+				}
+				else {
+					Subcategoria subcategoria = new Subcategoria(idSubcategoria,subcategoriaStr,categoria);
+					categoria.agregarSubcategoria(subcategoria);
+					
+					Parte parte = new Parte(idSubcategoria,gondola,subcategoria);
+					gondola.agregarParte(parte);
+					
+					int i = 0;
+					while (i < cantidadOriginal) {
+						int id1 = numeroProductos()+1;
+						var producto = new Producto(id1, idProducto, nombre, temperaturaConservacion, precioVentaProducto, 
+								precioUnidad, unidad, empacado, peso, loteProducto);
+						producto.agregarUbicacion(parte);
+						loteProducto.agregarProducto(producto);
+						adminProductos.agregarProducto(producto);
+						
+						i+=1;
+					}
+					
+				}
+				}
+				
+	
+			
+			else {
+				
+				System.out.println("9");
+				Categoria categoria = new Categoria(idCategoria, categoriaStr);
+				
+				Subcategoria subcategoria = new Subcategoria(idSubcategoria,subcategoriaStr,categoria);
+				categoria.agregarSubcategoria(subcategoria);
+				
+				Gondola gondola = new Gondola(idCategoria, categoria);
+				categoria.agregarGondola(gondola);
+				
+				Parte parte = new Parte(idSubcategoria,gondola,subcategoria);
+				gondola.agregarParte(parte);
+				
+				adminOrganizador.agregarCategoria(categoria);
+				
+				int i = 0;
+				while (i < cantidadOriginal) {
+					int id1 = numeroProductos()+1;
+					var producto = new Producto(id1, idProducto, nombre, temperaturaConservacion, precioVentaProducto, 
+							precioUnidad, unidad, empacado, peso, loteProducto);
+					producto.agregarUbicacion(parte);
+					loteProducto.agregarProducto(producto);
+					adminProductos.agregarProducto(producto);
+					
+					i+=1;
+				}
+			}
+			
+			System.out.println("10");
+			actualizarPrecios(loteProducto);
+			adminProductos.agregarLote(loteProducto);
+			System.out.println(adminProductos.productos);
+			
+			
+			linea = br.readLine(); 
 		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		br.close();
+		
 	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
 	
 
 	public Producto consultarProducto(int id) {
@@ -79,6 +267,7 @@ public class ControladorInventario {
 
 	public int numeroProductos() {
 		int tamano = adminProductos.productos.size();
+		
 		return tamano;
 	}
 	

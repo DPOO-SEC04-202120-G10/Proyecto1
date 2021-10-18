@@ -55,6 +55,8 @@ public class LoaderArchivos {
 			int idCategoria = Integer.parseInt(partes[13]);
 			int idSubcategoria = Integer.parseInt(partes[14]);
 			
+			System.out.println("pasa\n");
+			
 			var mapa = controladorInventario.adminProductos.disponiblesPorProducto;
 			
 			if (mapa.get(idProducto)!= null) {
@@ -66,6 +68,8 @@ public class LoaderArchivos {
 			
 			LoteProducto loteProducto = new LoteProducto(id, fechaVencimiento, idProducto, cantidadOriginal, cantidadDisponibles,
 					precioCompraProducto, precioVentaProducto); 
+			
+			
 			
 			if (controladorInventario.adminOrganizador.existeCategoria(idCategoria, controladorInventario.adminOrganizador.categorias)) {
 				var categoria = controladorInventario.adminOrganizador.retornarCategoria(idCategoria,controladorInventario.adminOrganizador.categorias);
@@ -82,6 +86,7 @@ public class LoaderArchivos {
 								precioUnidad, unidad, empacado, peso, loteProducto);
 						producto.agregarUbicacion(parte);
 						loteProducto.agregarProducto(producto);
+						controladorInventario.adminProductos.agregarProducto(producto);
 						
 						i+=1;
 					}
@@ -100,15 +105,15 @@ public class LoaderArchivos {
 								precioUnidad, unidad, empacado, peso, loteProducto);
 						producto.agregarUbicacion(parte);
 						loteProducto.agregarProducto(producto);
+						controladorInventario.adminProductos.agregarProducto(producto);
 						
 						i+=1;
 					}
 					
 				}
+				}
 				
-				
-				
-			}
+	
 			
 			else {
 				
@@ -132,6 +137,7 @@ public class LoaderArchivos {
 							precioUnidad, unidad, empacado, peso, loteProducto);
 					producto.agregarUbicacion(parte);
 					loteProducto.agregarProducto(producto);
+					controladorInventario.adminProductos.agregarProducto(producto);
 					
 					i+=1;
 				}
@@ -139,6 +145,7 @@ public class LoaderArchivos {
 			
 			controladorInventario.actualizarPrecios(loteProducto);
 			controladorInventario.adminProductos.agregarLote(loteProducto);
+			System.out.println(controladorInventario.adminProductos.productos);
 			
 			
 			linea = br.readLine(); 

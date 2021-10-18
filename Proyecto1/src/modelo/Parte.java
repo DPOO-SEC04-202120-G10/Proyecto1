@@ -12,6 +12,7 @@ public class Parte {
 		this.id = id;
 		this.gondola = gondola;
 		this.subcategoria = subcategoria;
+		this.productos = new ArrayList<Producto>();
 	}
 	
 	public void agregarProducto(Producto producto) {
