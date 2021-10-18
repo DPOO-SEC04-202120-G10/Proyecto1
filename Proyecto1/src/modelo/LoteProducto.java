@@ -33,4 +33,12 @@ public class LoteProducto {
 		productos.add(producto);
 	}
 	
+	public String darInformacion() {
+		String info = ("id: " + String.valueOf(id) + " idProducto: " + String.valueOf(idProducto) + " fechaVencimiento: " + 
+						fechaVencimiento + " cantidadOrginial: " + String.valueOf(cantidadOriginal) + 
+						" cantidadDisponibles: " + String.valueOf(cantidadDisponibles) + " precioCompraProducto" +
+						String.valueOf(precioCompraProducto) + " precioVentaProducto" + String.valueOf(precioVentaProducto));
+		return info;
+	}
+	
 }

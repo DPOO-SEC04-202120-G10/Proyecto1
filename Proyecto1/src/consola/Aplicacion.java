@@ -10,7 +10,6 @@ import modelo.Pedido;
 import modelo.Cliente;
 
 import java.io.*;
-import java.io.BufferedReader;
 
 
 
@@ -43,8 +42,8 @@ public class Aplicacion {
 			        int opcion_seleccionada = inputScanner.nextInt();
 			        
 					if (opcion_seleccionada == 1)
-					//ejecutarInv();
-						System.out.println("Hola");
+					    ejecutarInv(elContI);
+						
 				
 					else if (opcion_seleccionada == 2)
 						ejecutarPOS(elContC, elContI, idPedido);
@@ -92,63 +91,64 @@ public class Aplicacion {
 			idPedido= 0;
 		}
 	
-	private static void ejecutarPOS(ControladorCliente  elContC, ControladorInventario contI, int idPedido) 
-	{
-		ControladorPedido elContP = new ControladorPedido();
-			
-		boolean continuar = true;
-		while (continuar)
+		
+		private static void ejecutarPOS(ControladorCliente  elContC, ControladorInventario contI, int idPedido) 
 		{
-			try
-			{
-				MostrarMenu2();
-				inputScanner.useDelimiter(System.lineSeparator());
-		        System.out.println("Por favor seleccione una opcion");
-		        int opcion_seleccionada = inputScanner.nextInt();
-	
-				Cliente cliente = null;
-				if (opcion_seleccionada == 1)
-					 System.out.println("holan");
-					 cliente= ejecutarRegistrar(elContC);
-					ejecutarPedido(cliente, elContP, contI, idPedido);
-				 if (opcion_seleccionada == 2)
-					cliente= ejecutarIngresar(elContC);
-					ejecutarPedido(cliente, elContP, contI, idPedido);
+			ControladorPedido elContP = new ControladorPedido();
 				
-				 if (opcion_seleccionada == 3)
-				{
-					System.out.println("Saliendo de la aplicación ...");
-					continuar = false;
-				}
-				else
-				{
-					System.out.println("Por favor seleccione una opción válida.");
-				}
-			}
-			catch (NumberFormatException e)
+			boolean continuar = true;
+			while (continuar)
 			{
-				System.out.println("Debe seleccionar uno de los números de las opciones.");
+				try
+				{
+					MostrarMenu2();
+					inputScanner.useDelimiter(System.lineSeparator());
+			        System.out.println("Por favor seleccione una opcion");
+			        int opcion_seleccionada = inputScanner.nextInt();
+		
+					Cliente cliente = null;
+					if (opcion_seleccionada == 1)
+						 System.out.println("holan");
+						 cliente= ejecutarRegistrar(elContC);
+						ejecutarPedido(cliente, elContP, contI, idPedido);
+					 if (opcion_seleccionada == 2)
+						cliente= ejecutarIngresar(elContC);
+						ejecutarPedido(cliente, elContP, contI, idPedido);
+					
+					 if (opcion_seleccionada == 3)
+					{
+						System.out.println("Saliendo de la aplicacion ...");
+						continuar = false;
+					}
+					else
+					{
+						System.out.println("Por favor seleccione una opción válida.");
+					}
+				}
+				catch (NumberFormatException e)
+				{
+					System.out.println("Debe seleccionar uno de los números de las opciones.");
+				}
 			}
 		}
-	}
 	
-	private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
-	
-	{	inputScanner.useDelimiter(System.lineSeparator());
-    	System.out.println("Cedula:");
-    	int cedula = inputScanner.nextInt();
-		elContC.registrarNuevoCliente (cedula);
-		Cliente elCliente = elContC.buscarCliente(cedula);
-		return elCliente;
-	}
+		private static  Cliente ejecutarRegistrar(ControladorCliente  elContC)
 		
-		private static Cliente ejecutarIngresar(ControladorCliente  elContC)
-		{String cedulaa = input("Cedula");
-		int cedula= Integer.parseInt(cedulaa);
-		Cliente elCliente = elContC.buscarCliente(cedula);
-		return elCliente;
-			}
-	
+		{	inputScanner.useDelimiter(System.lineSeparator());
+	    	System.out.println("Cedula:");
+	    	int cedula = inputScanner.nextInt();
+			elContC.registrarNuevoCliente (cedula);
+			Cliente elCliente = elContC.buscarCliente(cedula);
+			return elCliente;
+		}
+			
+			private static Cliente ejecutarIngresar(ControladorCliente  elContC)
+			{String cedulaa = input("Cedula");
+			int cedula= Integer.parseInt(cedulaa);
+			Cliente elCliente = elContC.buscarCliente(cedula);
+			return elCliente;
+				}
+		
 		private static void ejecutarPedido(Cliente cliente, ControladorPedido elContP, ControladorInventario elContI,int idPedido)
 		{
 			Pedido pedido = elContP.nuevoPedido(idPedido); 
@@ -194,6 +194,101 @@ public class Aplicacion {
 			// TODO Auto-generated method stub
 			return null;
 		}
+		
+		private static void ejecutarInv(ControladorInventario elContI) {
+	        
+	        boolean continuar = true;
+			while (continuar) 
+			{
+				try
+				{
+					mostrarMenu3();
+					inputScanner.useDelimiter(System.lineSeparator());
+			        System.out.println("Por favor seleccione una opcion");
+			        int opcion_seleccionada = inputScanner.nextInt();
+			        
+					if (opcion_seleccionada == 1) {
+					   ejecutarCargarNuevoCargamento(elContI);
+					
+					}
+				
+					else if (opcion_seleccionada == 2) {
+						ejecutarConsultarProducto(elContI);
+					}
+					
+					else if (opcion_seleccionada == 3) {
+						ejecutarConsultarLote(elContI);
+					}	
+					
+					else if (opcion_seleccionada == 4)
+					{
+						System.out.println("Saliendo ...");
+						continuar = false;
+					}
+					else
+					{
+						System.out.println("Por favor seleccione una opción válida.");
+					}}
+				
+				catch (NumberFormatException e)
+				{
+				System.out.println("Debe seleccionar uno de los números de las opciones.");}
+				}
+				}
+				
+	        
+		
+		
+		
+		private static void mostrarMenu3()
+		{
+			System.out.println("\nOpciones\n");
+			System.out.println("1. Cargar nuevo cargamento");
+			System.out.println("2. Consultar informacion producto");
+			System.out.println("3. Consulat informacion lote \n");
+			System.out.println("4. Salir \n");
+		
+		}
+		
+		private static void ejecutarCargarNuevoCargamento(ControladorInventario elContI) {
+			inputScanner.useDelimiter(System.lineSeparator());
+			System.out.println("Ingrese direccion archivo: ");
+			String archivo = inputScanner.next();
+			try {
+				elContI.cargarNuevoLote(archivo, elContI);
+			}
+		
+			catch (FileNotFoundException e) {
+				e.printStackTrace();
+		}
+			catch (IOException e) {
+				e.printStackTrace();
+		}}
+		
+		private static void ejecutarConsultarProducto(ControladorInventario elContI) {
+			inputScanner.useDelimiter(System.lineSeparator());
+			System.out.println("Ingrese el id: ");
+			int id = inputScanner.nextInt();
+			var producto = elContI.buscarEnListaProducto(id, elContI.adminProductos.productos);
+			var info = producto.darInformacion();
+			System.out.println(info);
+			
+		}
+		
+		private static void ejecutarConsultarLote(ControladorInventario elContI) {
+			inputScanner.useDelimiter(System.lineSeparator());
+			System.out.println("Ingrese el id: ");
+			int id = inputScanner.nextInt();
+			var lote = elContI.buscarEnListaLote(id, elContI.adminProductos.lotes);
+			var info = lote.darInformacion();
+			System.out.println(info);
+		}
+		
+		
+		
+			
+			
+	        
 	
 	}
 	

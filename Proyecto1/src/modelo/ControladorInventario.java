@@ -20,7 +20,7 @@ public class ControladorInventario {
 		
 	}
 	
-	private void cargarNuevoLote(String archivoLote, ControladorInventario controladorInventario) throws FileNotFoundException, IOException
+	public void cargarNuevoLote(String archivoLote, ControladorInventario controladorInventario) throws FileNotFoundException, IOException
 	{
 		
 		try {
@@ -41,12 +41,12 @@ public class ControladorInventario {
 		return producto;
 	}
 	
-	private LoteProducto consultarLote(int id) {
+	public LoteProducto consultarLote(int id) {
 		var lote = buscarEnListaLote(id,adminProductos.lotes);
 		return lote;
 	}
 	
-	private Producto buscarEnListaProducto(int id, ArrayList<Producto> lista) {
+	public Producto buscarEnListaProducto(int id, ArrayList<Producto> lista) {
 		int i = 0;
 		while (i < lista.size()) {
 			Producto productoLista = lista.get(i);
@@ -62,7 +62,7 @@ public class ControladorInventario {
 			
 	}
 	
-	private LoteProducto buscarEnListaLote(int id, ArrayList<LoteProducto> lista) {
+	public LoteProducto buscarEnListaLote(int id, ArrayList<LoteProducto> lista) {
 		int i = 0;
 		while (i < lista.size()) {
 			LoteProducto loteLista = lista.get(i);

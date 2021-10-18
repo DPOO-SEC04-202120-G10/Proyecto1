@@ -36,6 +36,16 @@ public class Producto {
 		this.vencido= false;
 
 	}
+	
+	public String darInformacion() {
+		String info = ("id: " + String.valueOf(id) + " idProducto: " + String.valueOf(idProducto) + " nombre: " + nombre
+				+ " temperaturaConservacion: " + String.valueOf(temperaturaConservacion)+ " precio: ") + 
+				String.valueOf(precio) + " precioUnidad: " + String.valueOf(precioUnidad) + " unidad: " + unidad 
+				+ " empacado: " + String.valueOf(empacado) + " peso: " + peso + " lote: " + String.valueOf(lote.id) +
+				" disponible: " + String.valueOf(disponible) + " vencido: " + String.valueOf(vencido);
+		
+		return info;
+	}
 
 	public void agregarUbicacion(Parte parte) {
 		this.ubicacion = parte;
@@ -44,6 +54,7 @@ public class Producto {
 	
 	public void actualizarPrecio(int precio) {
 		this.precio = precio;
+		this.precioUnidad = precio/peso;
 	}
 	
 		
