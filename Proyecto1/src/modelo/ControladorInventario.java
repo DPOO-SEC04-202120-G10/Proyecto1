@@ -115,11 +115,40 @@ public class ControladorInventario {
 		adminProductos.disponiblesPorProducto.replace(idProducto, total, totales);
 		Producto prod= consultarProducto(id);
 		prod.cambiardisp();
+		LoteProducto lote=prod.getLote();
+		lote.cambiardispo();
 		
 	}
 	
+	public void vencido (int id, String fecha)
+	{
+		
+	
+	Producto prod= consultarProducto(id);
+	int idp= prod.getidP();
+	LoteProducto lote=prod.getLote();
+	String fechav=lote.getVencimiento();
+	String[] partes = fechav.split(";");
+	int av = Integer.parseInt(partes[0]);
+	int mv = Integer.parseInt(partes[1]);
+	int dv= Integer.parseInt(partes[2]);
+	
+	String[] partess = fecha.split(";");
+	int ap = Integer.parseInt(partess[0]);
+	int mp = Integer.parseInt(partess[1]);
+	int dp= Integer.parseInt(partess[2]);
+	boolean a=(av<=ap);
+	boolean b= (mv<=mp);
+	boolean c= (dv<=dp);
+	if  (a&&b&&c)
+	{
+	prod.cambiarvencido();
+	int total= adminProductos.disponiblesPorProducto.get(idp);
+	int totales=total-1;
+	adminProductos.disponiblesPorProducto.replace(idp, total, totales);
 
-
+}}
+	
 
 }
 

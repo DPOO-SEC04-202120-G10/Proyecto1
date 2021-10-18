@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Pedido {
 	public ArrayList<Producto> productos;
 	public int idPedido;
-	public LocalDate fecha;
+	public String fecha;
 	public int  costo; 
-	public Pedido(int id, LocalDate fecha, int costo ) 
+	public Pedido(int id, String fecha, int costo ) 
 	{
 		this.idPedido = id;
 		this.fecha = fecha;
@@ -29,5 +29,9 @@ public class Pedido {
 		// TODO Auto-generated method stub
 	
 		return costo;
+	}
+	public String getfecha() {
+		// TODO Auto-generated method stub
+		return fecha;
 	}
 }

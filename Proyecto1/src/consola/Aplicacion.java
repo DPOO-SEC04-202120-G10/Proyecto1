@@ -24,10 +24,13 @@ public class Aplicacion {
 			System.out.println("Inicio de ejecucion de la aplicacion");
 			ControladorCliente  elContC = new ControladorCliente();
 			ControladorInventario elContI = new ControladorInventario ();
-			ejecutarAplicacion(elContC,elContI, idPedido);
+			inputScanner.useDelimiter(System.lineSeparator());
+			System.out.println("Fecha de hoy (año/mes/dia)");
+			String fecha = inputScanner.next();
+			ejecutarAplicacion(elContC,elContI, idPedido, fecha);
 			
 		}
-		public static void ejecutarAplicacion(ControladorCliente  elContC, ControladorInventario elContI, int idPedido)
+		public static void ejecutarAplicacion(ControladorCliente  elContC, ControladorInventario elContI, int idPedido, String fecha)
 		{
 			System.out.println("Bienvenido al Supermercado\n");
 				
@@ -47,7 +50,7 @@ public class Aplicacion {
 						System.out.println("Hola");
 				
 					else if (opcion_seleccionada == 2)
-						ejecutarPOS(elContC, elContI, idPedido);
+						ejecutarPOS(elContC, elContI, idPedido,fecha);
 	
 					else if (opcion_seleccionada == 3)
 					{
@@ -85,14 +88,14 @@ public class Aplicacion {
 			
 		private static void MostrarMenu2()
 		{
-			System.out.println("\nOpciones de la aplicacion\n");
+			System.out.println("\nOpciones de la aplicacion POS\n");
 			System.out.println("1. Registrar Nuevo Cliente");
 			System.out.println("2. Ingresar Cliente");
-			System.out.println("3. Salir de la aplicación\n");
+			System.out.println("3. Salir de la aplicación POS\n");
 			idPedido= 0;
 		}
 	
-	private static void ejecutarPOS(ControladorCliente  elContC, ControladorInventario contI, int idPedido) 
+	private static void ejecutarPOS(ControladorCliente  elContC, ControladorInventario contI, int idPedido, String fecha) 
 	{
 		ControladorPedido elContP = new ControladorPedido();
 			
@@ -110,10 +113,10 @@ public class Aplicacion {
 				if (opcion_seleccionada == 1)
 					 System.out.println("holan");
 					 cliente= ejecutarRegistrar(elContC);
-					ejecutarPedido(cliente, elContP, contI, idPedido);
+					ejecutarPedido(cliente, elContP, contI, idPedido,fecha);
 				 if (opcion_seleccionada == 2)
 					cliente= ejecutarIngresar(elContC);
-					ejecutarPedido(cliente, elContP, contI, idPedido);
+					ejecutarPedido(cliente, elContP, contI, idPedido, fecha);
 				
 				 if (opcion_seleccionada == 3)
 				{
@@ -149,11 +152,10 @@ public class Aplicacion {
 		return elCliente;
 			}
 	
-		private static void ejecutarPedido(Cliente cliente, ControladorPedido elContP, ControladorInventario elContI,int idPedido)
+		private static void ejecutarPedido(Cliente cliente, ControladorPedido elContP, ControladorInventario elContI,int idPedido, String fecha)
 		{
-			Pedido pedido = elContP.nuevoPedido(idPedido); 
+			Pedido pedido = elContP.nuevoPedido(idPedido,fecha); 
 			ejecutaranadirProd(pedido,elContP, cliente, elContI);
-			
 			cliente.anadirPedido(pedido);
 		}
 	

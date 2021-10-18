@@ -84,4 +84,14 @@ public class Producto {
 	{ 
 		this.disponible= false;
 	}
+
+	public void cambiarvencido() {
+		// TODO Auto-generated method stub
+		this.vencido=true;
+	}
+	public LoteProducto getLote()
+	{
+		return lote;
+	}
+
 	}
