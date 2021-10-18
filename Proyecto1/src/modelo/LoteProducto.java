@@ -28,9 +28,17 @@ public class LoteProducto {
 		this.productos = new ArrayList<Producto>();
 		
 	}
+	public String getVencimiento()
+	{
+		return fechaVencimiento;
+	}
 	
 	public void agregarProducto(Producto producto) {
 		productos.add(producto);
+	}
+	public void cambiardispo() {
+		// TODO Auto-generated method stub
+		this.cantidadDisponibles=cantidadDisponibles-1;
 	}
 	
 	public String darInformacion() {
