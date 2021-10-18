@@ -150,11 +150,14 @@ public class Aplicacion {
 		}
 			
 			private static Cliente ejecutarIngresar(ControladorCliente  elContC)
-			{String cedulaa = input("Cedula");
-			int cedula= Integer.parseInt(cedulaa);
-			Cliente elCliente = elContC.buscarCliente(cedula);
-			return elCliente;
-				}
+			{	
+				inputScanner.useDelimiter(System.lineSeparator());
+				System.out.println("Cedula:");
+				int cedula = inputScanner.nextInt();
+				Cliente elCliente = elContC.buscarCliente(cedula);
+				return elCliente;
+				
+			}
 		
 	
 		private static void ejecutarPedido(Cliente cliente, ControladorPedido elContP, ControladorInventario elContI,int idPedido, String fecha)
