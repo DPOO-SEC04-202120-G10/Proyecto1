@@ -18,6 +18,7 @@ public Cliente(int cedula, int edad, String estadoCivil, String sexo,String situ
 	this.sexo=sexo;
 	this.situacionLaboral=situacionLaboral;
 	this.puntos=puntos;
+	this.historialPedidos = new ArrayList<Pedido>();
 	} 
 	
 	 

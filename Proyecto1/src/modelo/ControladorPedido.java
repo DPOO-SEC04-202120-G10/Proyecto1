@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class ControladorPedido {
 private ArrayList<Pedido> historialPedidos;
+
 public ControladorPedido ()
 {
 		this.historialPedidos= new ArrayList<Pedido>();
@@ -19,17 +20,21 @@ public Pedido nuevoPedido (int idPedido,String fecha) {
 public String generarFactura(Pedido pedido, Cliente cliente)
 {
 	String textoFactura = "";
-	ArrayList<Producto> productos=pedido.getProductos();
+	int puntosn = 0;
+	ArrayList<Producto> productos = pedido.getProductos();
 	for (int i = 0; i < productos.size(); i++){
 		Producto elItem = productos.get(i);
 		
 		var costo = precioProducto(elItem);
-		int puntosn= costo/1000;
-		int puntos= cliente.puntos();
-		textoFactura = textoFactura + "%n" + elItem + ":     " + costo + "\n Puntos nuevos :"+ puntosn + "\n Puntos Acumulados Totales"+ puntos;
+		puntosn = puntosn + costo/1000;
+		cliente.anadirPuntos(costo);
+		
+		textoFactura = textoFactura + "\n" + elItem.getnombre() + ":     " + costo;
 	}
+	int puntos= cliente.puntos();
+	textoFactura = textoFactura + "\n" + "Precio Total:     " + pedido.getcosto() + "\n" + "Puntos nuevos: " + puntosn +
+					"Puntos totales: " + puntos;
 	
-	textoFactura = textoFactura + "%n" + "Precio Total:     " + pedido.getcosto();
 	return textoFactura;
 }
 
@@ -37,15 +42,19 @@ public void anadirProducto (Pedido pedido,int id, ControladorInventario controla
 {
 	Producto producto = controladorInventario.consultarProducto(id);
 	int idp= producto.getidP();
-	controladorInventario.actualizar(id, idp);
 	int costo= precioProducto(producto);
 	boolean disp=ControladorInventario.disponibilidadProducto(producto);
+	
 	if (disp==true) 
 	{
-	pedido.anadirProducto(producto, costo);
+		pedido.anadirProducto(producto, costo);
+		controladorInventario.actualizar(id, idp);
 }
 	else
-	{System.out.println("Este producto no se encuentra disponible."); }
+	{
+		System.out.println("Este producto no se encuentra disponible."); 
+		}
+	
 }
  
 public int precioProducto(Producto producto)

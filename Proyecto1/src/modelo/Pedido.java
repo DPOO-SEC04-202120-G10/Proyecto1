@@ -12,6 +12,7 @@ public class Pedido {
 		this.idPedido = id;
 		this.fecha = fecha;
 		this.costo= costo;
+		this.productos = new ArrayList<Producto>();
 	}
 	public void anadirProducto (Producto producto, int ncosto) 
 	{

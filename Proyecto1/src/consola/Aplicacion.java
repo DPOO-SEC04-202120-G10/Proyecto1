@@ -169,7 +169,7 @@ public class Aplicacion {
 		private static void ejecutaranadirProd(Pedido pedido, ControladorPedido contp, Cliente cliente, ControladorInventario elContI)
 		{
 		boolean mas= true;
-		while (mas==true)
+		while (mas)
 		
 		{
 			inputScanner.useDelimiter(System.lineSeparator());
@@ -186,10 +186,11 @@ public class Aplicacion {
 			int id= Integer.parseInt(idd);
 			contp.anadirProducto(pedido, id, elContI);
 		}
-		else
+		if (si==2)
 		{
-			mas= false;
 			ejecutarCerrarPedido(idPedido, contp, pedido, cliente);
+			mas= false;
+			
 			 
 			
 		}
@@ -201,7 +202,8 @@ public class Aplicacion {
 		{
 			idPedido=1+ idPedido;
 			contp.anadiraHistorial(pedido);
-			contp.generarFactura(pedido,cliente);
+			System.out.println(contp.generarFactura(pedido,cliente));
+			
 			
 			
 			
