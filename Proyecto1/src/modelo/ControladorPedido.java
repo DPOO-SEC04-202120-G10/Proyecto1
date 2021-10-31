@@ -33,7 +33,7 @@ public String generarFactura(Pedido pedido, Cliente cliente)
 	}
 	int puntos= cliente.puntos();
 	textoFactura = textoFactura + "\n" + "Precio Total:     " + pedido.getcosto() + "\n" + "Puntos nuevos: " + puntosn +
-					"Puntos totales: " + puntos;
+					" Puntos totales: " + puntos;
 	
 	return textoFactura;
 }

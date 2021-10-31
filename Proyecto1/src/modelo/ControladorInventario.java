@@ -31,19 +31,18 @@ public class ControladorInventario {
 		
 		BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
 		String linea = br.readLine();    
-		System.out.println("1");
 		
 		while (linea != null) 
 		{
-			System.out.println("2");
+			
 			
 			String[] partes = linea.split(";");
 			
-			System.out.println("3");
+			
 			int id = Integer.parseInt(partes[0]);
-			System.out.println("4");
+			
 			String fechaVencimiento = partes[1];
-			System.out.println("4");
+			
 			int idProducto = Integer.parseInt(partes[2]);
 			int cantidadOriginal = Integer.parseInt(partes[3]);
 			int cantidadDisponibles = cantidadOriginal;
@@ -52,23 +51,23 @@ public class ControladorInventario {
 			String nombre = partes[6];
 			int temperaturaConservacion = Integer.parseInt(partes[7]);
 			String unidad = partes[8];
-			System.out.println("6");
+			
 			int peso = Integer.parseInt(partes[9]);
-			System.out.println("a");
+			
 			int precioUnidad = peso/precioVentaProducto;
-			System.out.println("c");
+			
 			boolean empacado = Boolean.parseBoolean(partes[10]);
-			System.out.println("d");
+
 			String categoriaStr = partes[11];
 			String subcategoriaStr = partes[12];
-			System.out.println("b");
+		
 			int idCategoria = Integer.parseInt(partes[13]);
 			int idSubcategoria = Integer.parseInt(partes[14]);
 			
 			
 			
 			var mapa = adminProductos.disponiblesPorProducto;
-			System.out.println("7");
+	
 			if (mapa.get(idProducto)!= null) {
 				mapa.put(idProducto, mapa.get(idProducto) + cantidadOriginal);
 			}
@@ -80,7 +79,7 @@ public class ControladorInventario {
 					precioCompraProducto, precioVentaProducto); 
 			
 			
-			System.out.println("8");
+		
 			if (adminOrganizador.existeCategoria(idCategoria, adminOrganizador.categorias)) {
 				var categoria = adminOrganizador.retornarCategoria(idCategoria,adminOrganizador.categorias);
 				var gondola = categoria.retornarGondola();
@@ -127,7 +126,7 @@ public class ControladorInventario {
 			
 			else {
 				
-				System.out.println("9");
+	
 				Categoria categoria = new Categoria(idCategoria, categoriaStr);
 				
 				Subcategoria subcategoria = new Subcategoria(idSubcategoria,subcategoriaStr,categoria);
@@ -154,7 +153,7 @@ public class ControladorInventario {
 				}
 			}
 			
-			System.out.println("10");
+			
 			actualizarPrecios(loteProducto);
 			adminProductos.agregarLote(loteProducto);
 			System.out.println(adminProductos.productos);

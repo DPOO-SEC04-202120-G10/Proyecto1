@@ -25,7 +25,7 @@ public class Aplicacion {
 			ControladorInventario elContI = new ControladorInventario ();
 			ControladorPedido elContP = new ControladorPedido();
 			inputScanner.useDelimiter(System.lineSeparator());
-			System.out.println("Fecha de hoy (año/mes/dia)");
+			System.out.println("Fecha de hoy (ano/mes/dia)");
 			String fecha = inputScanner.next();
 			ejecutarAplicacion(elContC,elContI, idPedido, fecha,  elContP);
 			
@@ -54,12 +54,12 @@ public class Aplicacion {
 	
 					else if (opcion_seleccionada == 3)
 					{
-						System.out.println("Saliendo de la aplicación ...");
+						System.out.println("Saliendo de la aplicacion ...");
 						continuar = false;
 					}
 					else
 					{
-						System.out.println("Por favor seleccione una opción válida.");
+						System.out.println("Por favor seleccione una opcion valida.");
 					}}
 				
 				catch (NumberFormatException e)
@@ -77,7 +77,7 @@ public class Aplicacion {
 			System.out.println("\nOpciones de la aplicacion\n");
 			System.out.println("1. Sistema Inventario");
 			System.out.println("2. Sistema POS");
-			System.out.println("3. Salir de la aplicación\n");
+			System.out.println("3. Salir de la aplicacion\n");
 		}
 	
 		private static void ejecutarMostrarMenu1 ()
@@ -91,7 +91,7 @@ public class Aplicacion {
 			System.out.println("\nOpciones de la aplicacion POS\n");
 			System.out.println("1. Registrar Nuevo Cliente");
 			System.out.println("2. Ingresar Cliente");
-			System.out.println("3. Salir de la aplicación POS\n");
+			System.out.println("3. Salir de la aplicacion POS\n");
 			idPedido= 0;
 		}
 	
@@ -113,25 +113,27 @@ public class Aplicacion {
 		        int opcion_seleccionada = inputScanner.nextInt();
 	
 				Cliente cliente = null;
-				if (opcion_seleccionada == 1)
-					 System.out.println("holan");
-					 cliente= ejecutarRegistrar(elContC);
+				if (opcion_seleccionada == 1) {
+					cliente= ejecutarRegistrar(elContC);
 					ejecutarPedido(cliente, elContP, contI, idPedido,fecha);
-				 if (opcion_seleccionada == 2)
+					}
+					
+				 if (opcion_seleccionada == 2) {
 					cliente= ejecutarIngresar(elContC);
 					ejecutarPedido(cliente, elContP, contI, idPedido, fecha);
-
-					 if (opcion_seleccionada == 3)
-					{
-						System.out.println("Saliendo de la aplicacion ...");
-						continuar = false;
 					}
-					else
+
+				 if (opcion_seleccionada == 3)
 					{
-						System.out.println("Por favor seleccione una opción válida.");
+					System.out.println("Saliendo de la aplicacion ...");
+					continuar = false;
+					}
+				else
+					{
+					System.out.println("Por favor seleccione una opcion valida.");
 					}
 				}
-				catch (NumberFormatException e)
+			catch (NumberFormatException e)
 				{
 					System.out.println("Debe seleccionar uno de los números de las opciones.");
 				}
@@ -250,7 +252,7 @@ public class Aplicacion {
 					}
 					else
 					{
-						System.out.println("Por favor seleccione una opción válida.");
+						System.out.println("Por favor seleccione una opcion valida.");
 					}}
 				
 				catch (NumberFormatException e)
