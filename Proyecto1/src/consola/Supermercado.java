@@ -110,7 +110,9 @@ new Supermercado();
 				}
 					else if (e.getSource()==boton2) {
 						new MenuPOS1();
+						
 					}
+					frame.setVisible(false);
 	}
 
 }
