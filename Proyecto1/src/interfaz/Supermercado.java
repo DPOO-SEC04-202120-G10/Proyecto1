@@ -31,6 +31,9 @@ JButton boton2;
 JPanel panel;
 String fecha;
 JTextField fechahoy;
+ControladorCliente  elContC;
+ControladorInventario elContI;
+ControladorPedido elContP;
 
 public Supermercado() {
 	frame = new JFrame ();
@@ -103,13 +106,15 @@ new Supermercado();
 		// TODO Auto-generated method stub
 					if (e.getSource()==boton1) {
 						fecha=fechahoy.getText();
+						
 					
 					
 				}
 					else if (e.getSource()==boton2) {
-						new MenuPOS1();
+	
 						fecha=fechahoy.getText();
 						System.out.print(fecha);
+						new MenuPOS1();
 					}
 					frame.setVisible(false);
 	}
