@@ -15,21 +15,35 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modelo.Cliente;
+import modelo.ControladorCliente;
+import modelo.ControladorInventario;
+import modelo.ControladorPedido;
 
 public class MenuPOS1 implements ActionListener{
 JFrame frame; 
 JPanel panel; 
 JButton boton1; 
 JButton boton2;
+ControladorCliente  elContC;
+ControladorInventario elContI;
+int idPedido;
+String fecha;
+ControladorPedido elContP;
+public MenuPOS1(ControladorCliente  ContC, ControladorInventario contI, int idpedido, String fech,ControladorPedido ContP) 
+{	elContC=ContC;
+	elContI=contI;
+	idPedido=idpedido;
+	fecha=fech;
+	elContP=ContP;
 
-public MenuPOS1() 
-{
+	
 	frame = new JFrame ();
 	panel= new JPanel();
 	boton1= new JButton("Ingresar Cliente"); 
 	boton1.addActionListener(this);
 	boton2 = new JButton("Registrar Cliente"); 
 	boton2.addActionListener(this);
+
 
 	
 	
@@ -48,14 +62,14 @@ public MenuPOS1()
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	if (e.getSource()==boton1) {
-		new FrameIngresar();
+		new FrameIngresar(elContC,elContI,idPedido, fecha,elContP);
 		frame.setVisible(false);
 		
 		
 		
 	}
 		else if (e.getSource()==boton2) {
-			new FrameRegistrar();
+			new FrameRegistrar(elContC,elContI,idPedido, fecha,elContP);
 			frame.setVisible(false);
 		}
 }

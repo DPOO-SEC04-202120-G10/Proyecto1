@@ -12,11 +12,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import modelo.Cliente;
+import modelo.ControladorInventario;
+import modelo.ControladorPedido;
+import modelo.Pedido;
+
 public class FrameProductoNuevo {
 	String direction;
 	JFrame frame; 
 	JPanel panel;
-	public FrameProductoNuevo()
+	Pedido pedido;
+	ControladorPedido contp;
+	Cliente cliente;
+	ControladorInventario elContI;
+	public FrameProductoNuevo(Pedido pedido, ControladorPedido contp, Cliente cliente, ControladorInventario elContI)
 	{
 		 frame= new JFrame();
 		 panel= new JPanel();
@@ -35,6 +44,8 @@ public class FrameProductoNuevo {
 					direction=id.getText();
 			        System.out.println(direction);
 			        frame.setVisible(false);
+			        contp.anadirProducto(pedido, getid(), elContI);
+			        //new FrameImagen ();
 			        
 			        
 			    }
@@ -53,4 +64,5 @@ public class FrameProductoNuevo {
 	{int cedulaa= Integer.parseInt(direction);
 		return cedulaa;
 	}
+	
 }

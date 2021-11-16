@@ -14,12 +14,19 @@ import javax.swing.JTextField;
 
 import modelo.Cliente;
 import modelo.ControladorCliente;
+import modelo.ControladorInventario;
+import modelo.ControladorPedido;
 
 public class FrameRegistrar {
 	String direction;
 	JFrame frame; 
 	JPanel panel;
-	public FrameRegistrar()
+	ControladorCliente  elContC;
+	ControladorInventario contI;
+	int idPedido;
+	String fech;
+	ControladorPedido elContP;
+	public FrameRegistrar(ControladorCliente  elContC, ControladorInventario contI, int idPedido, String fecha,ControladorPedido elContP)
 	{
 		 frame= new JFrame();
 		 panel= new JPanel();

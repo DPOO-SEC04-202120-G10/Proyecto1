@@ -32,7 +32,7 @@ public class Aplicacion {
 		}
 		public static void ejecutarAplicacion(ControladorCliente  elContC, ControladorInventario elContI, int idPedido, String fecha,ControladorPedido elContP)
 		{
-			//System.out.println("Bienvenido al Supermercado\n");
+			System.out.println("Bienvenido al Supermercado\n");
 				
 			
 			boolean continuar = true;
@@ -146,7 +146,7 @@ public class Aplicacion {
 		{	inputScanner.useDelimiter(System.lineSeparator());
 	    	System.out.println("Cedula:");
 	    	int cedula = inputScanner.nextInt();
-			elContC.registrarNuevoCliente (cedula);
+			elContC.registrarNuevoClientes (cedula);
 			Cliente elCliente = elContC.buscarCliente(cedula);
 			return elCliente;
 		}

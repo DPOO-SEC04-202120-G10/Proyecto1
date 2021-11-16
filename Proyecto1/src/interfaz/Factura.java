@@ -16,6 +16,7 @@ public class Factura {
 		{	
 			 frame= new JFrame();
 			 panel= new JPanel();
+			 factura="Hola";
 			frame.add(panel, BorderLayout.CENTER);
 			frame.setLayout(new GridBagLayout());
 			GridBagConstraints c= new GridBagConstraints();

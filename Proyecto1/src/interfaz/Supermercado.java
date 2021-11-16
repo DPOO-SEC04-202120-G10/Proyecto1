@@ -34,7 +34,7 @@ JTextField fechahoy;
 ControladorCliente  elContC;
 ControladorInventario elContI;
 ControladorPedido elContP;
-
+private static int idPedido;
 public Supermercado() {
 	frame = new JFrame ();
 	panel= new JPanel();
@@ -89,9 +89,9 @@ public Supermercado() {
 	frame.setTitle("Ventana de Inicio");
 	frame.pack();
 	frame.setVisible(true);
-	ControladorCliente  elContC = new ControladorCliente();
-	ControladorInventario elContI = new ControladorInventario ();
-	ControladorPedido elContP = new ControladorPedido();
+	elContC = new ControladorCliente();
+	elContI = new ControladorInventario ();
+	elContP = new ControladorPedido();
 }
 
 	public static void main(String[] args) {
@@ -114,10 +114,13 @@ new Supermercado();
 	
 						fecha=fechahoy.getText();
 						System.out.print(fecha);
-						new MenuPOS1();
+						new MenuPOS1(elContC, elContI, idPedido,fecha, elContP);
 					}
 					frame.setVisible(false);
 	}
 	
-
+private void addid()
+{
+	idPedido++;
+}
 }

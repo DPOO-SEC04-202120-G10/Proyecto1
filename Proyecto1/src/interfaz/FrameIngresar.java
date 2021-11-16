@@ -15,6 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import modelo.Cliente;
+import modelo.ControladorCliente;
+import modelo.ControladorInventario;
+import modelo.ControladorPedido;
+import modelo.Pedido;
+
 public class FrameIngresar implements ActionListener {
 	String direction;
 	String edadd; 
@@ -29,9 +35,20 @@ public class FrameIngresar implements ActionListener {
 	JTextField sexo;
 	JTextField estadoCivil;
 	JTextField situacionLab;
-	
-		public  FrameIngresar()
+	ControladorCliente  elContC;
+	ControladorInventario elContI;
+	int idPedido;
+	String fecha;
+	ControladorPedido elContP;
+	Cliente elCliente;
+	Pedido pedido;
+		public  FrameIngresar(ControladorCliente  ContC, ControladorInventario contI, int idpedido, String fech,ControladorPedido ContP)
 		{
+			elContC=ContC;
+			elContI=contI;
+			idPedido=idpedido;
+			fecha=fech;
+			elContP=ContP;
 			 frame= new JFrame();
 			 panel= new JPanel();
 			frame.add(panel, BorderLayout.CENTER);
@@ -102,19 +119,38 @@ public class FrameIngresar implements ActionListener {
 					frame.setVisible(true);
 
 		}
-		public int getcedula()
+		private int getcedula()
 		{int cedulaa= Integer.parseInt(direction);
 			return cedulaa;
 		}
+		private Cliente newClienter(int edad,String estadoCivil,String sexo,String situacionLaboral)
+		{elContC.registrarNuevoCliente (getcedula(),edad,estadoCivil,sexo,situacionLaboral);
+			Cliente elCliente = elContC.buscarCliente(getcedula());
+			return elCliente;
+		}
+		private void ejecutarPedido()
+
+		{
+			Pedido pedido = elContP.nuevoPedido(idPedido,fecha); 
+			//
+			elCliente.anadirPedido(pedido);}
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			direction=cedula.getText();
 			edadd=edad.getText();
+			int eddad=Integer.parseInt(edadd);
 			sexoo=sexo.getText();
 			slab=situacionLab.getText();
 			eCivil=estadoCivil.getText();
 	        System.out.println(direction);
+	        System.out.println("Si logro");
+	        elCliente= newClienter(eddad,eCivil,sexoo,slab);
+	        Pedido pedido = elContP.nuevoPedido(idPedido,fecha); 
+	        new MenuBotones2(pedido,elContP, elCliente, elContI, elContC);
 	        frame.setVisible(false);
+	        
+	        
+	        
 		}
 }

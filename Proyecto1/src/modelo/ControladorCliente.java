@@ -13,7 +13,7 @@ public ControladorCliente ()
 {
 		this.clientes= new ArrayList<Cliente>();
 	}
-public void registrarNuevoCliente (int cedula) 
+public void registrarNuevoClientes (int cedula) 
 {
 	  
 	inputScanner.useDelimiter(System.lineSeparator());
@@ -35,6 +35,14 @@ public void registrarNuevoCliente (int cedula)
 	int puntos= 0;
 	
 	Cliente elcliente= new Cliente(cedula,edad,estadoCivil,sexo,situacionLaboral, puntos );
+	clientes.add(elcliente);
+}
+public void registrarNuevoCliente (int cedula ,int edad,String estadoCivil,String sexo,String situacionLaboral) 
+{
+	
+	int puntos= 0;
+	
+	Cliente elcliente= new Cliente(cedula,edad,estadoCivil,sexo,situacionLaboral, puntos);
 	clientes.add(elcliente);
 }
 public Cliente buscarCliente(int id)
