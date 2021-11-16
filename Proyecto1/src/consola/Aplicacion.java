@@ -32,7 +32,7 @@ public class Aplicacion {
 		}
 		public static void ejecutarAplicacion(ControladorCliente  elContC, ControladorInventario elContI, int idPedido, String fecha,ControladorPedido elContP)
 		{
-			System.out.println("Bienvenido al Supermercado\n");
+			//System.out.println("Bienvenido al Supermercado\n");
 				
 			
 			boolean continuar = true;

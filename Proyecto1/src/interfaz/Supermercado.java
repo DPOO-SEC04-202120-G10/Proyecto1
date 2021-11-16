@@ -1,4 +1,4 @@
-package consola;
+package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -19,12 +19,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import interfaz.MenuPOS1;
+import modelo.ControladorCliente;
+import modelo.ControladorInventario;
+import modelo.ControladorPedido;
+
 public class Supermercado implements ActionListener {
 JFrame frame;
 JButton boton1;
 JButton boton2;
 JPanel panel;
 String fecha;
+JTextField fechahoy;
+
 public Supermercado() {
 	frame = new JFrame ();
 	panel= new JPanel();
@@ -48,21 +55,9 @@ public Supermercado() {
 	c.gridy=1;
 	c.gridx=0;
 	panel.add(lab,c);
-	JTextField fechahoy= new JTextField(10); 
+	fechahoy= new JTextField(10); 
 	fechahoy.setBounds(100, 20, 165, 25);
-	Action action = new AbstractAction()
-			{ @Override
-	    public void actionPerformed(ActionEvent e)
-		    {
-				fecha=fechahoy.getText();
-		        System.out.println("some action");
-		        System.out.println(fecha);
-		        
-		        
-		    }
-		};
 
-	fechahoy.addActionListener(action);
 	c.gridx=1;
 	c.gridy=1;
 	panel.add(fechahoy,c);
@@ -91,6 +86,9 @@ public Supermercado() {
 	frame.setTitle("Ventana de Inicio");
 	frame.pack();
 	frame.setVisible(true);
+	ControladorCliente  elContC = new ControladorCliente();
+	ControladorInventario elContI = new ControladorInventario ();
+	ControladorPedido elContP = new ControladorPedido();
 }
 
 	public static void main(String[] args) {
@@ -104,15 +102,17 @@ new Supermercado();
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 					if (e.getSource()==boton1) {
-					
+						fecha=fechahoy.getText();
 					
 					
 				}
 					else if (e.getSource()==boton2) {
 						new MenuPOS1();
-						
+						fecha=fechahoy.getText();
+						System.out.print(fecha);
 					}
 					frame.setVisible(false);
 	}
+	
 
 }
