@@ -36,13 +36,16 @@ public class FrameRegistrar implements ActionListener {
 	
 	
 	public FrameRegistrar(ControladorCliente  ContC, ControladorInventario contI, int idpedido, String fech,ControladorPedido ContP)
-	{elContC=ContC;
+	{
+		
+	elContC=ContC;
 	elContI=contI;
 	idPedido=idpedido;
 	fecha=fech;
 	this.elContP=ContP;
 	
 		 frame= new JFrame();
+		 frame.setLocationRelativeTo(null);
 		 panel= new JPanel();
 		frame.add(panel, BorderLayout.CENTER);
 		frame.setLayout(new GridBagLayout());

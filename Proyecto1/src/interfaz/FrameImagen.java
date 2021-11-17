@@ -22,6 +22,7 @@ public class FrameImagen extends JFrame implements ActionListener {
 	private ControladorInventario elContI;
 	
 	public FrameImagen(ControladorInventario elContIi) {
+		setLocationRelativeTo(null);
 		var elContI = elContIi;
 		setSize( 580, 700 );
 		var panel = new JPanel();

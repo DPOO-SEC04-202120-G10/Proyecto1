@@ -10,6 +10,7 @@ import javax.swing.WindowConstants;
 public class FrameInfoProd extends JFrame{
 	
 	public FrameInfoProd(String informacion) {
+		setLocationRelativeTo(null);
 		JPanel panel = new JPanel();
 		getContentPane();
 		JLabel label = new JLabel(informacion);

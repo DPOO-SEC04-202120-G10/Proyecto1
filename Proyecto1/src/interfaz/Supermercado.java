@@ -37,6 +37,7 @@ ControladorPedido elContP;
 private static int idPedido;
 public Supermercado() {
 	frame = new JFrame ();
+	frame.setLocationRelativeTo(null);
 	panel= new JPanel();
 	boton1= new JButton("Sistema de Inventario"); 
 	boton1.addActionListener(this);

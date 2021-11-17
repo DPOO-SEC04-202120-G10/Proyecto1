@@ -19,6 +19,7 @@ public class InterfazInventario extends JFrame
 	
 	public InterfazInventario(ControladorInventario elContI)
     {
+		setLocationRelativeTo(null);
 		this.elContI = elContI;
         setTitle( "Sistema Inventario" );
         setSize( 580, 700 );

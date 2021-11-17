@@ -50,6 +50,7 @@ public class FrameIngresar implements ActionListener {
 			fecha=fech;
 			elContP=ContP;
 			 frame= new JFrame();
+			frame.setLocationRelativeTo(null);
 			 panel= new JPanel();
 			frame.add(panel, BorderLayout.CENTER);
 			frame.setLayout(new GridLayout());
@@ -120,20 +121,18 @@ public class FrameIngresar implements ActionListener {
 
 		}
 		private int getcedula()
-		{int cedulaa= Integer.parseInt(direction);
+		{
+			int cedulaa= Integer.parseInt(direction);
 			return cedulaa;
 		}
+		
 		private Cliente newClienter(int edad,String estadoCivil,String sexo,String situacionLaboral)
-		{elContC.registrarNuevoCliente (getcedula(),edad,estadoCivil,sexo,situacionLaboral);
+		{
+			elContC.registrarNuevoCliente(getcedula(),edad,estadoCivil,sexo,situacionLaboral);
 			Cliente elCliente = elContC.buscarCliente(getcedula());
 			return elCliente;
 		}
-		private void ejecutarPedido()
-
-		{
-			Pedido pedido = elContP.nuevoPedido(idPedido,fecha); 
-			//
-			elCliente.anadirPedido(pedido);}
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub

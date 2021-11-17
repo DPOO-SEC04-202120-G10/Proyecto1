@@ -24,6 +24,7 @@ public class FrameCargamento extends JFrame implements ActionListener {
 	private ControladorInventario elContI;
 	
 	public FrameCargamento(ControladorInventario elContIi) {
+		setLocationRelativeTo(null);
 		this.elContI = elContIi;
 		setSize( 580, 700 );
 		this.panel = new JPanel();

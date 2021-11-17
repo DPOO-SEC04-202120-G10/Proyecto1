@@ -38,10 +38,11 @@ public MenuPOS1(ControladorCliente  ContC, ControladorInventario contI, int idpe
 
 	
 	frame = new JFrame ();
+	frame.setLocationRelativeTo(null);
 	panel= new JPanel();
-	boton1= new JButton("Ingresar Cliente"); 
+	boton1= new JButton("Registrar Cliente"); 
 	boton1.addActionListener(this);
-	boton2 = new JButton("Registrar Cliente"); 
+	boton2 = new JButton("Ingresar Cliente"); 
 	boton2.addActionListener(this);
 
 

@@ -28,6 +28,7 @@ public class FrameProductoNuevo {
 	public FrameProductoNuevo(Pedido pedido, ControladorPedido contp, Cliente cliente, ControladorInventario elContI)
 	{
 		 frame= new JFrame();
+		 frame.setLocationRelativeTo(null);
 		 panel= new JPanel();
 		frame.add(panel, BorderLayout.CENTER);
 		frame.setLayout(new GridBagLayout());

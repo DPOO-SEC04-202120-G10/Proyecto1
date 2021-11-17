@@ -22,6 +22,7 @@ public class FrameProducto extends JFrame implements ActionListener {
 	private ControladorInventario elContI;
 	
 	public FrameProducto(ControladorInventario elContIi) {
+		setLocationRelativeTo(null);
 		this.elContI = elContIi;
 		setSize( 580, 700 );
 		var panel = new JPanel();

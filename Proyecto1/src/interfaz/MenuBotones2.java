@@ -39,7 +39,7 @@ public class MenuBotones2 implements ActionListener{
 	boton2 = new JButton("Finalizar Compra"); 
 	boton2.addActionListener(this);
 
-	
+	frame.setLocationRelativeTo(null);
 	
 	panel.add(boton1);
 	panel.add(boton2);

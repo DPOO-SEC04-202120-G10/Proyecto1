@@ -19,8 +19,11 @@ public class Factura {
 		Pedido pedido;
 		Cliente cliente;
 		ControladorPedido contp;
+		
 		public Factura (Pedido Pedidoo,Cliente cLiente, ControladorPedido contP)
-		{pedido=Pedidoo;
+		{
+		
+		pedido=Pedidoo;
 		cliente=cLiente;
 		contp=contP;
 		factura=contp.generarFactura(pedido,cliente);
@@ -28,6 +31,7 @@ public class Factura {
 			panel= new JPanel();
 			frame.add(panel, BorderLayout.CENTER);
 			frame.setLayout(new GridBagLayout());
+			frame.setLocationRelativeTo(null);
 			GridBagConstraints c= new GridBagConstraints();
 			JLabel instruccionId= new JLabel (factura);
 			instruccionId.setBounds(10,20,80,25);
