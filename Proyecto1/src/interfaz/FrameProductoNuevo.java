@@ -45,7 +45,7 @@ public class FrameProductoNuevo {
 			        System.out.println(direction);
 			        frame.setVisible(false);
 			        contp.anadirProducto(pedido, getid(), elContI);
-			        //new FrameImagen ();
+			        //new FrameImagen (); 
 			        
 			        
 			    }

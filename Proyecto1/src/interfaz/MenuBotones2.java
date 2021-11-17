@@ -58,7 +58,7 @@ public void actionPerformed(ActionEvent e) {
 	}
 		else if (e.getSource()==boton2) {
 			elCliente.anadirPedido(pedido);
-			new Factura();
+			new Factura(pedido);
 		}
 }
 }

@@ -8,14 +8,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import modelo.Pedido;
+
 public class Factura {
 		JFrame frame; 
 		JPanel panel;
 		String factura;
-		public Factura ()
-		{	
-			 frame= new JFrame();
-			 panel= new JPanel();
+		Pedido pedido;
+		public Factura (Pedido Pedidoo)
+		{pedido=Pedidoo;
+		
+		frame= new JFrame();
+			panel= new JPanel();
 			 factura="Hola";
 			frame.add(panel, BorderLayout.CENTER);
 			frame.setLayout(new GridBagLayout());
