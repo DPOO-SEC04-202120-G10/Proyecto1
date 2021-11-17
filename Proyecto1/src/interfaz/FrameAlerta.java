@@ -23,7 +23,7 @@ public class FrameAlerta {
 		frame.add(panel, BorderLayout.CENTER);
 		frame.setLayout(new GridBagLayout());
 		GridBagConstraints c= new GridBagConstraints();
-		JLabel instruccionId= new JLabel ("Este producto no puede venderse");
+		JLabel instruccionId= new JLabel ("Este producto no se encuentra disponible.");
 		instruccionId.setBounds(10,20,80,25);
 		panel.add(instruccionId);
 		

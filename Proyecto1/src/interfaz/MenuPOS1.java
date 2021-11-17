@@ -63,14 +63,14 @@ public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	if (e.getSource()==boton1) {
 		new FrameIngresar(elContC,elContI,idPedido, fecha,elContP);
-		frame.setVisible(false);
+		//frame.setVisible(false);
 		
 		
 		
 	}
 		else if (e.getSource()==boton2) {
 			new FrameRegistrar(elContC,elContI,idPedido, fecha,elContP);
-			frame.setVisible(false);
+			//frame.setVisible(false);
 		}
 }
 

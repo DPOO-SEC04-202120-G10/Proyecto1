@@ -22,12 +22,19 @@ public class MenuBotones2 implements ActionListener{
 	Pedido pedido;
 	ControladorPedido elContP;
 	Cliente elCliente;
-	ControladorInventario contI;
+	ControladorCliente  elContC;
+	ControladorInventario elContI;
+	int idPedido;
+	String fecha;
 
-	public MenuBotones2(Pedido pedido, ControladorPedido elContP, Cliente elCliente, ControladorInventario contI, ControladorCliente contC) {
+	public MenuBotones2(Pedido Pedido, ControladorPedido ContP, Cliente Cliente, ControladorInventario ContI, ControladorCliente contC) {
+		elContI=ContI;
+		pedido= Pedido;
+		elContP=ContP;
+		elCliente=Cliente;
 	frame = new JFrame ();
 	panel= new JPanel();
-	boton1= new JButton("Ingresar Prodcuto"); 
+	boton1= new JButton("Ingresar Producto"); 
 	boton1.addActionListener(this);
 	boton2 = new JButton("Finalizar Compra"); 
 	boton2.addActionListener(this);
@@ -49,7 +56,7 @@ public class MenuBotones2 implements ActionListener{
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	if (e.getSource()==boton1) {
-		new FrameProductoNuevo(pedido,elContP, elCliente, contI);
+		new FrameProductoNuevo(pedido,elContP, elCliente, elContI);
 		
 
 		
@@ -58,7 +65,8 @@ public void actionPerformed(ActionEvent e) {
 	}
 		else if (e.getSource()==boton2) {
 			elCliente.anadirPedido(pedido);
-			new Factura(pedido);
+			elContP.anadiraHistorial(pedido);
+			new Factura(pedido,elCliente,elContP);
 		}
 }
 }

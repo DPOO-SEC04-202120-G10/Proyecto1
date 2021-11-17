@@ -106,7 +106,7 @@ new Supermercado();
 		// TODO Auto-generated method stub
 					if (e.getSource()==boton1) {
 						fecha=fechahoy.getText();
-						
+						new InterfazInventario(elContI);
 					
 					
 				}
@@ -116,7 +116,7 @@ new Supermercado();
 						System.out.print(fecha);
 						new MenuPOS1(elContC, elContI, idPedido,fecha, elContP);
 					}
-					frame.setVisible(false);
+					//frame.setVisible(false);
 	}
 	
 private void addid()

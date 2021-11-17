@@ -18,7 +18,7 @@ public class FrameInfoProd extends JFrame{
 		panel.setLayout(null);
 		panel.add(label);
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		add(panel);
 		setSize(500, 300);
 		setVisible(true);

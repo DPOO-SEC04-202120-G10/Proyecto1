@@ -1,6 +1,8 @@
 package modelo;
 import java.util.ArrayList;
 
+import interfaz.FrameAlerta;
+
 
 public class ControladorPedido {
 private ArrayList<Pedido> historialPedidos;
@@ -51,7 +53,7 @@ public void anadirProducto (Pedido pedido,int id, ControladorInventario controla
 		controladorInventario.actualizar(id, idp);
 }
 	else
-	{
+	{   new FrameAlerta();
 		System.out.println("Este producto no se encuentra disponible."); 
 		}
 	

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import modelo.Cliente;
+import modelo.ControladorPedido;
 import modelo.Pedido;
 
 public class Factura {
@@ -15,12 +17,15 @@ public class Factura {
 		JPanel panel;
 		String factura;
 		Pedido pedido;
-		public Factura (Pedido Pedidoo)
+		Cliente cliente;
+		ControladorPedido contp;
+		public Factura (Pedido Pedidoo,Cliente cLiente, ControladorPedido contP)
 		{pedido=Pedidoo;
-		
+		cliente=cLiente;
+		contp=contP;
+		factura=contp.generarFactura(pedido,cliente);
 		frame= new JFrame();
 			panel= new JPanel();
-			 factura="Hola";
 			frame.add(panel, BorderLayout.CENTER);
 			frame.setLayout(new GridBagLayout());
 			GridBagConstraints c= new GridBagConstraints();

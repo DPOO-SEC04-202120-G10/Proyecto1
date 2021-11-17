@@ -40,7 +40,7 @@ public class FrameRegistrar implements ActionListener {
 	elContI=contI;
 	idPedido=idpedido;
 	fecha=fech;
-	elContP=ContP;
+	this.elContP=ContP;
 	
 		 frame= new JFrame();
 		 panel= new JPanel();
